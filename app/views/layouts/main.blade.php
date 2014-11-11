@@ -16,9 +16,10 @@
 	{{ HTML::style( 'packages/bootstrap-select/dist/css/bootstrap-select.css' ) }}
 
 </head>
-<body class="layout-fixed offsidebar-open">
+<body>
 
 	@yield( 'navigator' )
+
 	<div class="wrapper">
 		{{ $content }}
 	</div>

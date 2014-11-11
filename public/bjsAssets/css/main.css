@@ -3,6 +3,17 @@
 body {
     font-family: 'Titillium Web', sans-serif;
 }
+body:before {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #eee;
+}
 /* ========================================================================
    component: login;
  ========================================================================== */
@@ -60,3 +71,5 @@ body {
 .width-320 {
     width : 320px;
 }
+
+
