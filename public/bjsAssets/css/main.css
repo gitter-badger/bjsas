@@ -1,0 +1,62 @@
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:200);
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+/* ========================================================================
+   component: login;
+ ========================================================================== */
+.login-container {
+    position  : relative;
+    margin    : 10% auto;
+    max-width : 400px;
+}
+.loginbox {
+    position           : relative;
+    min-width          : 350px;
+    min-height         : 280px;
+    padding            : 0;
+    -webkit-box-shadow : 0 0 14px rgba(0,0,0,.1);
+    -moz-box-shadow    : 0 0 14px rgba(0,0,0,.1);
+    box-shadow         : 0 0 14px rgba(0,0,0,.1);
+}
+.bg-white {
+    background-color: #fff!important;
+}
+.loginbox-title {
+    position    : relative;
+    text-align  : center;
+    width       : 100%;
+    height      : 35px;
+    padding-top : 10px;
+    font-size   : 20px;
+    font-weight : 700;
+    color       : #444;
+}
+.loginbox-social {
+    padding: 0 10px 10px;
+    text-align: center;
+}
+.social-title {
+    font-size   : 14px;
+    font-weight : 500;
+    color       : #a9a9a9;
+    margin-top  : 10px;
+}
+.loginbox-textbox, .loginbox-submit {
+    padding : 10px 25px;
+}
+.loginbox-remember {
+    padding-left : 25px;
+}
+.loginbox-signup {
+    text-align  : center;
+    padding-top : 10px;
+}
+
+/* ========================================================================
+   custom: width
+ ========================================================================== */
+.width-320 {
+    width : 320px;
+}
