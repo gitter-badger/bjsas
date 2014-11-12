@@ -276,7 +276,7 @@
                             </li>
                             <!--/Theme Selector Area-->
                             <li class="dropdown-footer">
-                                <a href="login.html">
+                                <a href="auth/logout">
                                     Sign out
                                 </a>
                             </li>
@@ -296,8 +296,6 @@
         <!-- /.col-lg-12 -->
     </div>
 
-
-    <div>{{Gravatar::get( 'janderbacalso@gmail.com' )}}</div>
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-8">
@@ -367,7 +365,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#">
+                                <a href="auth/logout">
                                     <i class="fa fa-sign-out fa-fw"></i> Sign Out
                                 </a>
                             </li>
