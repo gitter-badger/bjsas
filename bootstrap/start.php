@@ -25,9 +25,7 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(function(){
-
-	return strpos(gethostname(), 'local') ? 'local' : 'production';
-
+	return $_SERVER['HTTP_HOST'] == 'bjsas.dev' ? 'local' : 'production';
 });
 
 /*

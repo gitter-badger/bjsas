@@ -1,193 +1,102 @@
-/* ========================================================================
-   Component: layout
- ========================================================================== */
-/* padding required for navbar fixed-top */
-body { padding-top: 50px; }
-
-body,
-.wrapper > section {
-  background-color: #f5f7fa;
+.main-container {
+  position: static;
+  padding: 0;
 }
-/* ========================================================================
-   Component: top-navbar
- ========================================================================== */
-.topnavbar {
-  background-color : #fff;
-  border-radius    : 0;
+.page-container {
+  position: relative;
 }
-.topnavbar .navbar-header {
-  background-color: transparent;
-  background-image: -webkit-linear-gradient(left, #ec2121 0%, #f05050 100%);
-  background-image: -o-linear-gradient(left, #ec2121 0%, #f05050 100%);
-  background-image: linear-gradient(to right, #ec2121 0%, #f05050 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec2121', endColorstr='#fff05050', GradientType=1);
-}
-@media only screen and (min-width: 768px) {
-  .topnavbar .navbar-header {
-    background-image: none;
-  }
-}
-.topnavbar .navbar-nav > li > a,
-.topnavbar .navbar-nav > .open > a {
-  color: #ec2121;
-}
-.topnavbar .navbar-nav > li > a:hover,
-.topnavbar .navbar-nav > .open > a:hover,
-.topnavbar .navbar-nav > li > a:focus,
-.topnavbar .navbar-nav > .open > a:focus {
-  color: #9a0d0d;
-}
-.topnavbar .navbar-nav > .active > a,
-.topnavbar .navbar-nav > .open > a,
-.topnavbar .navbar-nav > .active > a:hover,
-.topnavbar .navbar-nav > .open > a:hover,
-.topnavbar .navbar-nav > .active > a:focus,
-.topnavbar .navbar-nav > .open > a:focus {
-  background-color: transparent;
-}
-.topnavbar .navbar-nav > li > [data-toggle='navbar-search'] {
-  color: #ffffff;
-}
-.topnavbar .nav-wrapper {
-  background-color: #ec2121;
-}
-@media only screen and (min-width: 768px) {
-  .topnavbar {
-    background-color: #ec2121;
-  }
-  .topnavbar .navbar-nav > .open > a,
-  .topnavbar .navbar-nav > .open > a:hover,
-  .topnavbar .navbar-nav > .open > a:focus {
-    box-shadow: 0 -3px 0 rgba(255, 255, 255, 0.5) inset;
-  }
-  .topnavbar .navbar-nav > li > a,
-  .topnavbar .navbar-nav > .open > a {
-    color: #ffffff;
-  }
-  .topnavbar .navbar-nav > li > a:hover,
-  .topnavbar .navbar-nav > .open > a:hover,
-  .topnavbar .navbar-nav > li > a:focus,
-  .topnavbar .navbar-nav > .open > a:focus {
-    color: #9a0d0d;
-  }
+.navbar.navbar-fixed-top+.main-container {
+  margin-top: 45px;
 }
 
 /* ========================================================================
-   Component: topnavbar-blue
+   component: navigation;
  ========================================================================== */
-nav.navbar {
-  border : 0;
+.navbar.navbar-fixed-top {
+  z-index : 1003;
 }
-#navbar {
-  padding-right: 20px;
+.navbar {
+  padding    : 0;
+  margin     : 0;
+  border     : none;
+  height     : 45px;
+  min-height : 45px;
+  z-index    : 200;
 }
-.topnavbar-blue .navbar-header {
-  background-color : #4186d3;
-  background-image: -webkit-linear-gradient(left, #4186d3 0%, #4186d3 100%);
-  background-image: -o-linear-gradient(left, #4186d3 0%, #4186d3 100%);
-  background-image: linear-gradient(to right, #4186d3 0%, #4186d3 100%);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eea2360', endColorstr='#4186d31', GradientType=1);
+.navbar-inner {
+  border                  : 0;
+  -webkit-border-radius   : 0;
+  -webkit-background-clip : padding-box;
+  -moz-border-radius      : 0;
+  -moz-background-clip    : padding;
+  border-radius           : 0;
+  background-clip         : padding-box;
+  margin                  : 0;
+  padding-left            : 0;
+  padding-right           : 0;
+  min-height              : 45px;
+  position                : relative;
+  background              : #4186d3;
 }
-
-.topnavbar-blue {
-  background-color : #4186d3;
+.navbar-container {
+  padding-left: 10px;
 }
-
-.navbar-brand, .navbar-toggle .menu {
-  color : #ffffff;
+.navbar-account {
+  height: 45px;
 }
-.navbar-brand:hover {
-  color : #eea236;
+.navbar-brand {
+  color               : #fff;
+  font-size           : 24px;
+  -webkit-text-shadow : none;
+  text-shadow         : none;
+  padding             : 2px 0 2px 0;
+  font-weight         : 200;
+  height              : 45px;
 }
-
-.navbar-toggle {
-  border-color: #ffffff;
+.navbar-brand small {
+  line-height : 2;
 }
-
 .account-area {
-  position: absolute;
-  top: 0;
-  right: 50px;
-  zoom: 1;
-  filter: alpha(opacity=100);
-  -webkit-opacity: 1;
-  -moz-opacity: 1;
-  opacity: 1;
-  list-style: none;
-  margin-bottom: 0;
-  display: inline-block;
+  position        : absolute;
+  top             : 0;
+  right           : 50px;
+  zoom            : 1;
+  filter          : alpha(opacity=100);
+  -webkit-opacity : 1;
+  -moz-opacity    : 1;
+  opacity         : 1;
+  list-style      : none;
+  margin-bottom   : 0;
+  display         : inline-block;
 }
-.account-area>li {
-  float: left;
-  position: relative;
-  height: 45px;
+.account-area > li {
+  float    : left;
+  position : relative;
+  height   : 45px;
 }
-.account-area>li>a {
-  position: relative;
-  min-width: 50px;
-  height: 45px;
-  display: inline-block;
+.account-area > li > a {
+  position  : relative;
+  min-width : 50px;
+  height    : 45px;
+  display   : inline-block;
 }
-.login-area {
-  padding: 8px 20px 10px 20px;
-  height: 45px;
-  opacity: 1;
-  position: relative;
-  cursor: pointer;
+.account-area > li > a > .badge {
+  position           : absolute;
+  top                : 6px;
+  left               : 4px;
+  padding            : 2px;
+  cursor             : pointer;
+  background-color   : transparent!important;
+  border             : 1px solid #fff;
+  width              : 18px;
+  height             : 18px;
+  box-shadow         : 1px 1px 0 #0072c6;
+  -webkit-transition : top .3s ease;
+  -moz-transition    : top .3s ease;
+  -o-transition      : top .3s ease;
+  transition         : top .3s ease;
 }
-.login-area section h2 {
-  font-size: 14px;
-  font-weight: 400;
-  white-space: nowrap;
-  margin: 0;
-}
-.avatar {
-  margin-right: 14px;
-  display: block;
-  float: left;
-  border-left: 2px solid #fb6e52;
-  width: 29px;
-  height: 29px;
-}
-.avatar img {
-  width: 29px;
-  height: 29px;
-}
-
-.login-area section {
-  width: auto;
-  display: block;
-  overflow: hidden;
-  line-height: 25px;
-  float: left;
-}
-.login-area section h2 {
-  font-size: 14px;
-  font-weight: 400;
-  white-space: nowrap;
-  margin: 0;
-}
-.login-area section h2 span {
-display: block;
-color: #fff;
-overflow: hidden;
--ms-text-overflow: ellipsis;
--o-text-overflow: ellipsis;
-text-overflow: ellipsis;
-text-decoration: none;
-line-height: 25px;
-}
-@media only screen and (min-width: 768px) {
-  .topnavbar-blue {
-    background-color : #4186d3;
-  }
-}
-/* ========================================================================
-   Component: badge w/ icon
- ========================================================================== */
- .icon {
+.icon {
   display            : block;
   color              : #fff;
   font-size          : 16px;
@@ -198,89 +107,294 @@ line-height: 25px;
   -o-transition      : line-height .3s ease;
   transition         : line-height .3s ease;
 }
-.badge {
-  color              : #ff8c0f;
-  position           : absolute;
-  top                : 6px;
-  left               : 4px;
-  padding            : 2px;
-  cursor             : pointer;
-  background-color   : transparent!important;
-  border             : 1px solid #ff8c0f;
-  width              : 18px;
-  height             : 18px;
-  box-shadow         : 1px 1px 0 #4e81bb;
-  -webkit-transition : top .3s ease;
-  -moz-transition    : top .3s ease;
-  -o-transition      : top .3s ease;
-  transition         : top .3s ease;
+
+.login-area {
+  padding: 8px 20px 10px 20px;
+  height: 45px;
+  opacity: 1;
+  position: relative;
+  cursor: pointer;
 }
- /* ========================================================================
-   Component: sidebar
+  .avatar img {
+    border-left : 2px solid #fb6e52;
+    width       : 29px;
+    height      : 29px;
+  }
+  .profile {
+    width       : auto;
+    display     : inline-block;
+    overflow    : hidden;
+    line-height : 10px;
+    color       : #ffffff;
+    font-weight : 400;
+    font-size   : 14px;
+    margin-left : 10px;
+  }
+/* ========================================================================
+   component: navigation - dropdown;
  ========================================================================== */
-.sidebar {
-  background-color: #3a3f51;
+.account-area>li .dropdown-menu {
+  padding                    : 0;
+  min-width                  : 240px;
+  -webkit-animation-name     : dropdownSlideInDown;
+  -moz-animation-name        : dropdownSlideInDown;
+  -o-animation-name          : dropdownSlideInDown;
+  animation-name             : dropdownSlideInDown;
+  -webkit-animation-duration : .3s;
+  -moz-animation-duration    : .3s;
+  -o-animation-duration      : .3s;
+  animation-duration         : .3s;
+  -webkit-border-radius      : 0!important;
+  -webkit-background-clip    : padding-box!important;
+  -moz-border-radius         : 0!important;
+  -moz-background-clip       : padding!important;
+  border-radius              : 0!important;
+  background-clip            : padding-box!important;
 }
-.sidebar .nav-heading {
-  color: #919da8;
+.account-area .login-area+.dropdown-menu {
+  width     : 100%;
+  min-width : 100px;
 }
-.sidebar .nav > li > a,
-.sidebar .nav > li > .nav-item {
-  color: #e1e2e3;
+.dropdown-menu > li {
+  border-bottom: 1px solid #f5f5f5;
+  background-color: #fff;
+  padding: 0 8px;
 }
-.sidebar .nav > li > a:focus,
-.sidebar .nav > li > .nav-item:focus,
-.sidebar .nav > li > a:hover,
-.sidebar .nav > li > .nav-item:hover {
-  color: #f05050;
+.dropdown-menu li a {
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 10px 2px;
 }
-.sidebar .nav > li > a > em,
-.sidebar .nav > li > .nav-item > em {
-  color: inherits;
+.dropdown-menu > .email {
+  color      : #d0d0d0;
+  text-align : center;
+  font-size  : 12px;
 }
-.sidebar .nav > li.active,
-.sidebar .nav > li.open,
-.sidebar .nav > li.active > a,
-.sidebar .nav > li.open > a,
-.sidebar .nav > li.active .nav,
-.sidebar .nav > li.open .nav {
-  background-color: #383d4e;
-  color: #f05050;
+.dropdown-menu > .dropdown-footer {
+  border-top    : 3px solid #0072c6;
+  min-height    : 35px;
+  border-bottom : 0;
 }
-.sidebar .nav > li.active > a > em,
-.sidebar .nav > li.open > a > em {
-  color: #f05050;
+.dropdown-menu.dropdown-login-area>li.dropdown-footer a {
+  color         : #999;
+  display       : inline-block;
+  clear         : none;
+  font-size     : 13px;
+  padding       : 10px;
 }
-.sidebar-subnav {
-  background-color: #3a3f51;
+.dropdown-menu > li > .avatar-area {
+  position: relative;
+  text-align: center;
+  margin: 10px auto;
+  width: 128px;
 }
-.sidebar-subnav > .sidebar-subnav-header {
-  color: #e1e2e3;
+.avatar-area .avatar {
+  width: 128px;
+  height: 128px;
 }
-.sidebar-subnav > li > a,
-.sidebar-subnav > li > .nav-item {
-  color: #e1e2e3;
-}
-.sidebar-subnav > li > a:focus,
-.sidebar-subnav > li > .nav-item:focus,
-.sidebar-subnav > li > a:hover,
-.sidebar-subnav > li > .nav-item:hover {
-  color: #f05050;
-}
-.sidebar-subnav > li.active > a,
-.sidebar-subnav > li.active > .nav-item {
-  color: #f05050;
-}
-.sidebar-subnav > li.active > a:after,
-.sidebar-subnav > li.active > .nav-item:after {
-  border-color: #f05050;
-  background-color: #f05050;
+.avatar-area .caption {
+  background-color : #0072c6;
+  zoom             : 1;
+  filter           : alpha(opacity=70);
+  -webkit-opacity  : .7;
+  -moz-opacity     : .7;
+  opacity          : .7;
+  bottom           : 0;
+  left             : 0;
+  color            : #fff;
+  font-size        : 10px;
+  line-height      : 9px;
+  position         : absolute;
+  padding          : 7px 0;
+  text-align       : center;
+  width            : 128px;
+  cursor           : pointer;
 }
 /* ========================================================================
-   Component: offsidebar
+   component: navigation - selected menu ( open );
  ========================================================================== */
-.offsidebar {
-  border-left: 1px solid #cccccc;
-  background-color: #ffffff;
-  color: #515253;
+.account-area>li.open>a {
+  background-color   : #0072c6;
+  -webkit-box-shadow : 0 2px 40px rgba(0,0,0,.4);
+  -moz-box-shadow    : 0 2px 40px rgba(0,0,0,.4);
+  box-shadow         : 0 2px 40px rgba(0,0,0,.4);
+}
+.account-area>li.open .dropdown-menu {
+  margin-top: 0;
+  right: 0;
+  border: 0!important;
+}
+.dropdown-arrow:before {
+  content: '';
+  display: inline-block;
+  right: 0;
+  position: absolute;
+  width: 50px;
+  background-color: #fff;
+  border: 0;
+  top: -46px;
+  height: 3px;
+  -webkit-box-shadow: 0 2px 40px rgba(0,0,0,.4);
+  -moz-box-shadow: 0 2px 40px rgba(0,0,0,.4);
+  box-shadow: 0 2px 40px rgba(0,0,0,.4);
+}
+.account-area .login-area+.dropdown-arrow:before {
+  width: 100%;
+}
+/* ========================================================================
+   component: sidebar;
+ ========================================================================== */
+.page-sidebar {
+  position : absolute;
+  top      : 0;
+  bottom   : 0;
+  width    : 224px;
+  display  : block;
+}
+.page-sidebar:before {
+  content: "";
+  position: fixed;
+  display: block;
+  width: 219px;
+  bottom: 0;
+  top: 0;
+  left: 5px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+  -moz-box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
+  z-index: 1;
+}
+.sidebar-fixed {
+  position : fixed;
+  top      : 45px;
+  float    : none!important;
+  z-index  : 1000;
+}
+.sidebar-fixed:before {
+  height : 5000px;
+  top    : 45px;
+  bottom : auto;
+}
+.sidebar-header-wrapper {
+  margin-left: 5px;
+  height: 40px;
+  margin-bottom: 0;
+  position: relative;
+}
+.sidebar-header-wrapper .searchinput {
+  height: 41px;
+  z-index: 2;
+  background-color: #fff;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #fff;
+  padding-left: 40px;
+  width: 100%;
+}
+.searchinput:focus {
+  -webkit-box-shadow : none;
+  -moz-box-shadow    : none;
+  box-shadow         : none;
+  border-color       : #fff;
+  color              : #262626;
+  background-color   : #ffffff;
+  outline            : 0;
+}
+.searchinput:focus~.searchhelper {
+  display: block;
+  z-index: 124;
+}
+.searchicon {
+  cursor   : pointer;
+  display  : inline-block;
+  height   : 12px;
+  left     : 20px;
+  position : absolute;
+  top      : 14px;
+  width    : 12px;
+  color    : #0072c6;
+  z-index  : 124;
+}
+.searchhelper {
+  -webkit-box-shadow: 0 10px 40px rgba(0,0,0,.4);
+  -moz-box-shadow: 0 10px 40px rgba(0,0,0,.4);
+  box-shadow: 0 10px 40px rgba(0,0,0,.4);
+  background-color: #fff;
+  color: #999;
+  display: none;
+  opacity: 1;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 40px;
+  z-index: 4;
+}
+/* ========================================================================
+   component: sidebar - menu;
+ ========================================================================== */
+.sidebar-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-left: 5px;
+}
+.sidebar-menu li {
+  display  : block;
+  padding  : 0;
+  margin   : 0;
+  border   : 0;
+  position : relative;
+}
+.sidebar-menu>li>a {
+  border-top : 1px solid #f3f3f3;
+}
+.sidebar-menu li.active>a {
+  display: block;
+  content: "";
+  color: #262626;
+  background-color: #f5f5f5;
+}
+.sidebar-menu li.active:not(.open):before {
+  display: block;
+}
+.sidebar-menu li:before {
+  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -4px;
+  width: 4px;
+  max-width: 4px;
+  overflow: hidden;
+  background-color: #0072c6;
+}
+.sidebar-menu a {
+  display             : block;
+  height              : 38px;
+  line-height         : 36px;
+  margin              : 0;
+  padding             : 0 16px 0 7px;
+  -webkit-text-shadow : none!important;
+  text-shadow         : none!important;
+  font-size           : 13px;
+  text-decoration     : none;
+  color               : #737373;
+  z-index             : 123;
+}
+
+.sidebar-menu a .menu-icon {
+  display        : inline-block;
+  vertical-align : middle;
+  min-width      : 30px;
+  text-align     : center;
+  font-size      : 14px;
+  font-weight    : normal;
+  font-style     : normal;
+  margin-top     : -3px;
 }

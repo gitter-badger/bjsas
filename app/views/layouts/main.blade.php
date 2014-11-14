@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 @yield( 'head_wrapper' )
+
 <head>
 	<meta charset="utf-8">
 	<title>BJS MotoShop</title>
@@ -20,9 +21,7 @@
 
 	@yield( 'navigator' )
 
-	<div class="wrapper">
-		{{ $content }}
-	</div>
+	@yield( 'content' )
 
 	<div class="footer">
 		@yield( 'footer' )

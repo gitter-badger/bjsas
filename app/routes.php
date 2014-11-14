@@ -1,5 +1,4 @@
 <?php
-
 Route::get('/'			  , 'PageController@showIndex');
 Route::get('/home'		  , 'PageController@showHome');
 Route::get('/about_us'	  , 'PageController@showAbout');
