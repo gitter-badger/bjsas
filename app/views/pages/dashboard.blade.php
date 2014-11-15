@@ -12,7 +12,7 @@
             @include( 'includes.sidebar' )
 
             <div class="page-content">
-                <div class="page-breadcrumbs">
+                <div class="page-breadcrumbs breadcrumbs-fixed">
                     <ul class="breadcrumb">
                         <li>
                             <i class="fa fa-home"></i>
@@ -21,6 +21,7 @@
                         <li class="active">Dashboard</li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </div>
