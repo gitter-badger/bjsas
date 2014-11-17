@@ -6,7 +6,7 @@ Route::get('/contact_us'  , 'PageController@showContact');
 Route::get('/dashboard'	  , 'PageController@showDashboard');
 
 Route::get('/login'	      , 'PageController@showLoginForm');
-Route::get('/employee'	  , 'PageController@showEmployeeForm');
+Route::get('/employee'	  , 'PageController@showEmployee');
 Route::get('/salary'	  , 'PageController@showSalary');
 Route::get('/payroll'	  , 'PageController@showPayrollForm');
 Route::get('/cashadvance' , 'PageController@showCashadvanceForm');

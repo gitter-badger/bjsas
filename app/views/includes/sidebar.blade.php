@@ -5,19 +5,19 @@
         <div class="searchhelper">Search Reports, Charts, and Employees</div>
     </div>
     <ul class="nav sidebar-menu">
-        <li class="active">
+        <li class="{{$fieldActive=='Dashboard' ? 'active' : ''}}">
             <a href="dashboard">
                 <i class="menu-icon glyphicon glyphicon-home"></i>
-                <span class="menu-text"> Dashboard </span>
+                <span class="menu-text"> Dashboard</span>
             </a>
         </li>
-        <li>
+        <li class="{{$fieldActive=='Inventory' ? 'active' : ''}}">
             <a href="dashboard">
                 <i class="menu-icon fa fa-bar-chart-o"></i>
                 <span class="menu-text"> Inventory </span>
             </a>
         </li>
-        <li>
+        <li class="{{$fieldActive=='Income' ? 'active' : ''}}">
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon fa fa-money"></i>
                 <span class="menu-text"> Income </span>
@@ -36,7 +36,7 @@
                 </li>
             </ul>
         </li>
-        <li>
+        <li class="{{$fieldActive=='Employees' ? 'open' : ''}}">
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon fa fa-users"></i>
                 <span class="menu-text"> Employees </span>
@@ -44,8 +44,8 @@
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="elements.html">
+                <li class="{{$subfield=='list' ? 'active' : ''}}">
+                    <a href="employee">
                         <span class="menu-text">List of Employees</span>
                     </a>
                 </li>

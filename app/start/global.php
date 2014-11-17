@@ -91,3 +91,9 @@ require app_path().'/filters.php';
 |
 */
 require app_path().'/validators.php';
+
+
+View::composer('dashboard', function($view)
+{
+    $view->with('count', User::count());
+});

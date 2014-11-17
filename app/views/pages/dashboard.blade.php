@@ -3,13 +3,13 @@
 @stop
 
 @section( 'navigator' )
-    @include( 'includes.navigator' )
+    @include( 'includes.navigator')
 @stop
 
 @section('content')
     <div class="main-container container-fluid">
         <div class="page-container">
-            @include( 'includes.sidebar' )
+            @include( 'includes.sidebar', array('fieldActive'=>'Dashboard', 'subfield'=>'') )
 
             <div class="page-content">
                 <div class="page-breadcrumbs breadcrumbs-fixed">
@@ -32,127 +32,76 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="widget">
-                                        <div class="widget-header bordered-bottom bordered-themesecondary">
-                                            <i class="widget-icon fa fa-users themesecondary"></i>
-                                            <span class="widget-caption themesecondary">List of Employees</span>
-                                        </div><!--Widget Header-->
-                                        <div class="widget-body">
-                                            <div class="widget-main no-padding">
-                                                <div class="widget-workspace">
-                                                    <ul class="widget-list">
-                                                        <li class="widget-item">
-                                                            <div class="row">
-                                                                <div class=" col-lg-6 col-sm-12">
-                                                                    <img src="bjsAssets/images/xanderdwyl.jpeg" class="user-avatar">
-                                                                    <span class="user-name">Adam Johnson</span>
-                                                                    <span class="user-at">at</span>
-                                                                    <span class="user-company">Microsoft</span>
-                                                                </div>
-                                                                <div class="ticket-time  col-lg-4 col-sm-6 col-xs-12">
-                                                                    <div class="divider hidden-md hidden-sm hidden-xs"></div>
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <span class="time">1 Hours Ago</span>
-                                                                </div>
-                                                                <div class="ticket-type  col-lg-2 col-sm-6 col-xs-12">
-                                                                    <span class="divider hidden-xs"></span>
-                                                                    <span class="type">Issue</span>
-                                                                </div>
-                                                                <div class="ticket-state bg-palegreen">
-                                                                    <i class="fa fa-check"></i>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="widget-item">
-                                                            <div class="row">
-                                                                <div class=" col-lg-6 col-sm-12">
-                                                                    <img src="bjsAssets/images/xanderdwyl.jpeg" class="user-avatar">
-                                                                    <span class="user-name">Divyia Phillips</span>
-                                                                    <span class="user-at">at</span>
-                                                                    <span class="user-company">Dribbble</span>
-                                                                </div>
-                                                                <div class="ticket-time  col-lg-4 col-sm-6 col-xs-12">
-                                                                    <div class="divider hidden-md hidden-sm hidden-xs"></div>
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <span class="time">3 Hours Ago</span>
-                                                                </div>
-                                                                <div class="ticket-type  col-lg-2 col-sm-6 col-xs-12">
-                                                                    <span class="divider hidden-xs"></span>
-                                                                    <span class="type">Payment</span>
-                                                                </div>
-                                                                <div class="ticket-state bg-palegreen">
-                                                                    <i class="fa fa-check"></i>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="widget-item">
-                                                            <div class="row">
-                                                                <div class=" col-lg-6 col-sm-12">
-                                                                    <img src="bjsAssets/images/xanderdwyl.jpeg" class="user-avatar">
-                                                                    <span class="user-name">Nicolai Larson</span>
-                                                                    <span class="user-at">at</span>
-                                                                    <span class="user-company">Google</span>
-                                                                </div>
-                                                                <div class="ticket-time  col-lg-4 col-sm-6 col-xs-12">
-                                                                    <div class="divider hidden-md hidden-sm hidden-xs"></div>
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <span class="time">18 Hours Ago</span>
-                                                                </div>
-                                                                <div class="ticket-type  col-lg-2 col-sm-6 col-xs-12">
-                                                                    <span class="divider hidden-xs"></span>
-                                                                    <span class="type">Issue</span>
-                                                                </div>
-                                                                <div class="ticket-state bg-darkorange">
-                                                                    <i class="fa fa-times"></i>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="widget-item">
-                                                            <div class="row">
-                                                                <div class=" col-lg-6 col-sm-12">
-                                                                    <img src="bjsAssets/images/xanderdwyl.jpeg" class="user-avatar">
-                                                                    <span class="user-name">Bill Jackson</span>
-                                                                    <span class="user-at">at</span>
-                                                                    <span class="user-company">Mabna</span>
-                                                                </div>
-                                                                <div class="ticket-time  col-lg-4 col-sm-6 col-xs-12">
-                                                                    <div class="divider hidden-md hidden-sm hidden-xs"></div>
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <span class="time">2 days Ago</span>
-                                                                </div>
-                                                                <div class="ticket-type  col-lg-2 col-sm-6 col-xs-12">
-                                                                    <span class="divider hidden-xs"></span>
-                                                                    <span class="type">Payment</span>
-                                                                </div>
-                                                                <div class="ticket-state bg-palegreen">
-                                                                    <i class="fa fa-check"></i>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="widget-item">
-                                                            <div class="row">
-                                                                <div class=" col-lg-6 col-sm-12">
-                                                                    <img src="bjsAssets/images/xanderdwyl.jpeg" class="user-avatar">
-                                                                    <span class="user-name">Eric Clapton</span>
-                                                                    <span class="user-at">at</span>
-                                                                    <span class="user-company">Musicker</span>
-                                                                </div>
-                                                                <div class="ticket-time  col-lg-4 col-sm-6 col-xs-12">
-                                                                    <div class="divider hidden-md hidden-sm hidden-xs"></div>
-                                                                    <i class="fa fa-clock-o"></i>
-                                                                    <span class="time">2 days Ago</span>
-                                                                </div>
-                                                                <div class="ticket-type  col-lg-2 col-sm-6 col-xs-12">
-                                                                    <span class="divider hidden-xs"></span>
-                                                                    <span class="type">Info</span>
-                                                                </div>
-                                                                <div class="ticket-state bg-yellow">
-                                                                    <i class="fa fa-info"></i>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
+                                <div class="col=lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="databox databox-lg databox-inverted radius-bordered databox-shadowed databox-graded databox-vertical">
+                                        <div class="databox-top bg-palegreen no-padding">
+                                            <div class="databox-stat white bg-palegreen font-120">
+                                                <i class="stat-icon fa fa-caret-down icon-xlg"></i>
+                                            </div>
+                                            <div class="horizontal-space space-lg"></div>
+                                            <div class="databox-sparkline no-margin">
+                                                <span data-sparkline="compositebar" data-height="82px" data-width="100%" data-barcolor="#b0dc81" data-barwidth="10px" data-barspacing="5px" data-fillcolor="false" data-linecolor="#fff" data-spotradius="3" data-linewidth="2" data-spotcolor="#fafafa" data-minspotcolor="#fafafa" data-maxspotcolor="#fff" data-highlightspotcolor="#fff" data-highlightlinecolor="#fff" data-composite="7, 6, 5, 7, 9, 10, 8, 7, 6, 6, 4, 7, 8, 10">8,4,1,2,4,6,2,4,4,8,10,7,10</span>
+                                            </div>
+                                        </div>
+                                        <div class="databox-bottom no-padding">
+                                            <div class="databox-row">
+                                                <div class="databox-cell col-xs-6 text-left">
+                                                    <span class="databox-text">Sales Total</span>
+                                                    <span class="databox-number">$23,657</span>
+                                                </div>
+                                                <div class="databox-cell col-xs-6 text-right">
+                                                    <span class="databox-text">September</span>
+                                                    <span class="databox-number font-70">$1,257</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col=lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="databox databox-lg databox-inverted radius-bordered databox-shadowed databox-graded databox-vertical">
+                                        <div class="databox-top bg-orange no-padding">
+                                            <div class="databox-stat white bg-orange font-120">
+                                                <i class="stat-icon fa fa-caret-up icon-xlg"></i>
+                                            </div>
+                                            <div class="horizontal-space space-lg"></div>
+                                            <div class="databox-sparkline no-margin">
+                                                <span data-sparkline="compositebar" data-height="82px" data-width="100%" data-barcolor="#fb7d64" data-barwidth="10px" data-barspacing="5px" data-fillcolor="false" data-linecolor="#fff" data-spotradius="3" data-linewidth="2" data-spotcolor="#fafafa" data-minspotcolor="#fafafa" data-maxspotcolor="#fff" data-highlightspotcolor="#fff" data-highlightlinecolor="#fff" data-composite="7, 6, 5, 7, 9, 10, 8, 6,2,4,1,2,7">10,7,10,8,4,6, 6, 4, 7, 8 ,4,4,8</span>
+                                            </div>
+                                        </div>
+                                        <div class="databox-bottom no-padding">
+                                            <div class="databox-row">
+                                                <div class="databox-cell cell-6 text-left">
+                                                    <span class="databox-text">Expenses Total</span>
+                                                    <span class="databox-number">76,109</span>
+                                                </div>
+                                                <div class="databox-cell cell-6 text-right">
+                                                    <span class="databox-text">New</span>
+                                                    <span class="databox-number font-70">7,540</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col=lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="databox databox-lg databox-inverted radius-bordered databox-shadowed databox-graded databox-vertical">
+                                        <div class="databox-top bg-azure no-padding">
+                                            <div class="databox-stat white bg-azure font-120">
+                                                <i class="stat-icon fa fa-caret-up icon-xlg"></i>
+                                            </div>
+                                            <div class="horizontal-space space-lg"></div>
+                                            <div class="databox-sparkline no-margin">
+                                                <span data-sparkline="compositebar" data-height="82px" data-width="100%" data-barcolor="#3bcbef" data-barwidth="10px" data-barspacing="5px" data-fillcolor="false" data-linecolor="#fff" data-spotradius="3" data-linewidth="2" data-spotcolor="#fafafa" data-minspotcolor="#fafafa" data-maxspotcolor="#fff" data-highlightspotcolor="#fff" data-highlightlinecolor="#fff" data-composite="8,4,1,2,4,6,2,4,4,8,10,7,7">7, 6, 5, 7, 9, 10, 8, 7, 6, 6, 4, 7, 8</span>
+                                            </div>
+                                        </div>
+                                        <div class="databox-bottom no-padding">
+                                            <div class="databox-row">
+                                                <div class="databox-cell cell-6 text-left">
+                                                    <span class="databox-text">Visits Total</span>
+                                                    <span class="databox-number">990,541</span>
+                                                </div>
+                                                <div class="databox-cell cell-6 text-right">
+                                                    <span class="databox-text">September</span>
+                                                    <span class="databox-number font-70">292,123</span>
                                                 </div>
                                             </div>
                                         </div>

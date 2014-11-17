@@ -9,7 +9,7 @@ class PageController extends BaseController {
 					'only'=>array(
 						'showDashboard',
 						'showRegisterForm',
-						'showEmployeeForm',
+						'showEmployee',
 						'showPayrollForm',
 						'showCashadvanceForm',
 						'showSalary')));
@@ -19,6 +19,9 @@ class PageController extends BaseController {
 	}
 	public function showDashboard() {
 		$this->layout->content = View::make('pages.dashboard');
+	}
+	public function showEmployee() {
+		$this->layout->content = View::make('pages.employees');
 	}
 	public function showLoginForm()
 	{

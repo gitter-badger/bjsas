@@ -30,9 +30,20 @@
 	</div>
 
 	@section( 'script_files' )
-		{{ HTML::script( 'bjsAssets/scripts/jquery-1.10.2.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/jquery-2.0.3.min.js' ) }}
+
 		{{ HTML::script( 'packages/bootstrap/dist/js/bootstrap.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/plugins/date-picker/bootstrap-datepicker.js' ) }}
+
+		{{ HTML::script( 'bjsAssets/scripts/plugins/sparkline/jquery.sparkline.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/plugins/sparkline/sparkline-init.js' ) }}
+
+		{{ HTML::script( 'bjsAssets/scripts/plugins/flot/jquery.flot.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/plugins/flot/jquery.flot.resize.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/plugins/flot/jquery.flot.pie.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/plugins/flot/jquery.flot.tooltip.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/plugins/flot/jquery.flot.orderBars.js' ) }}
+
 		<!-- angular packages -->
 		{{ HTML::script( 'packages/angular/angular.js' ) }}
 		{{ HTML::script( 'packages/angular-sanitize/angular-sanitize.js' ) }}
@@ -53,64 +64,65 @@
 	@show
 </body>
 <script type="text/javascript">
-    $(function () {
+	$(function () {
 		angular.module("bjsApp").constant("CSRF_TOKEN", '<?php echo csrf_token(); ?>');
 
-    	var formatTwo = function ( ) {
-    		return ( arguments[ 0 ] < 10 ) ? '0' + arguments[0] : arguments[0];
-    	}
+		var formatTwo = function ( ) {
+			return ( arguments[ 0 ] < 10 ) ? '0' + arguments[0] : arguments[0];
+		}
 
-    	var today = new Date();
+		var today = new Date();
 		var yr = today.getFullYear() - 18;
 		var dt = today.getDate();
 		var mt = today.getMonth();
-    	var legalAgeDate = formatTwo( mt ) + '/' + formatTwo( dt ) + '/' + yr;
-    	var toDate = formatTwo( mt + 1 ) + '/' + formatTwo( dt ) + '/' + today.getFullYear();
+		var legalAgeDate = formatTwo( mt ) + '/' + formatTwo( dt ) + '/' + yr;
+		var toDate = formatTwo( mt + 1 ) + '/' + formatTwo( dt ) + '/' + today.getFullYear();
 
 
-    	$('#birthDate').attr( 'placeholder', legalAgeDate );
-    	$('#date_released, #hiredDate').attr( 'placeholder', toDate );
+		$('#birthDate').attr( 'placeholder', legalAgeDate );
+		$('#date_released, #hiredDate').attr( 'placeholder', toDate );
 
-        $('.input-group.date').datepicker( {
-        	todayHighlight : true,
-        	todayBtn       : true,
-        	orientation    : 'top left',
-        	format         : 'mm/dd/yyyy'
-        } );
+		$('.input-group.date').datepicker( {
+			todayHighlight : true,
+			todayBtn       : true,
+			orientation    : 'top left',
+			format         : 'mm/dd/yyyy'
+		} );
 
-        $("[data-toggle='tooltip']").tooltip( 'show' );
+		$("[data-toggle='tooltip']").tooltip( 'show' );
 
-        $(".sp-employee").selectpicker({
-        	'size' : 10
-        });
+		$(".sp-employee").selectpicker({
+			'size' : 10
+		});
 
-        $('#payperiod').datepicker( { } );
+		$('#payperiod').datepicker( { } );
 
-	    $(".sidebar-toggler").on("click", function() {
-	        return $("#sidebar").toggleClass("hide"), $(".sidebar-toggler").toggleClass("active"), !1
-	    });
-	    var n = $("#sidebar").hasClass("menu-compact");
-	    $("#sidebar-collapse").on("click", function() {
-	        $("#sidebar").is(":visible") || $("#sidebar").toggleClass("hide");
-	        $("#sidebar").toggleClass("menu-compact");
-	        $(".sidebar-collapse").toggleClass("active");
-	        n = $("#sidebar").hasClass("menu-compact");
-	        n && $(".open > .submenu").removeClass("open")
-	    });
-	    $(".sidebar-menu").on("click", function(t) {
-	        var i = $(t.target).closest("a"),
-	            u, r, f;
-	        if (i && i.length != 0) {
-	            if (!i.hasClass("menu-dropdown")) return n && i.get(0).parentNode.parentNode == this && (u = i.find(".menu-text").get(0), t.target != u && !$.contains(u, t.target)) ? !1 : void 0;
-	            if (r = i.next().get(0), !$(r).is(":visible")) {
-	                if (f = $(r.parentNode).closest("ul"), n && f.hasClass("sidebar-menu")) return;
-	                f.find("> .open > .submenu").each(function() {
-	                    this == r || $(this.parentNode).hasClass("active") || $(this).slideUp(200).parent().removeClass("open")
-	                })
-	            }
-	            return n && $(r.parentNode.parentNode).hasClass("sidebar-menu") ? !1 : ($(r).slideToggle(200).parent().toggleClass("open"), !1)
-	        }
-	    })
+		$(".sidebar-toggler").on("click", function() {
+			return $("#sidebar").toggleClass("hide"), $(".sidebar-toggler").toggleClass("active"), !1
+		});
+		var n = $("#sidebar").hasClass("menu-compact");
+		$("#sidebar-collapse").on("click", function() {
+			$("#sidebar").is(":visible") || $("#sidebar").toggleClass("hide");
+			$("#sidebar").toggleClass("menu-compact");
+			$(".sidebar-collapse").toggleClass("active");
+			n = $("#sidebar").hasClass("menu-compact");
+			n && $(".open > .submenu").removeClass("open")
+		});
+		$(".sidebar-menu").on("click", function(t) {
+			var i = $(t.target).closest("a"),
+				u, r, f;
+			if (i && i.length != 0) {
+				if (!i.hasClass("menu-dropdown")) return n && i.get(0).parentNode.parentNode == this && (u = i.find(".menu-text").get(0), t.target != u && !$.contains(u, t.target)) ? !1 : void 0;
+				if (r = i.next().get(0), !$(r).is(":visible")) {
+					if (f = $(r.parentNode).closest("ul"), n && f.hasClass("sidebar-menu")) return;
+					f.find("> .open > .submenu").each(function() {
+						this == r || $(this.parentNode).hasClass("active") || $(this).slideUp(200).parent().removeClass("open")
+					})
+				}
+				return n && $(r.parentNode.parentNode).hasClass("sidebar-menu") ? !1 : ($(r).slideToggle(200).parent().toggleClass("open"), !1)
+			}
+		});
+		InitiateSparklineCharts.init();
 	});
 </script>
 </html>
