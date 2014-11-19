@@ -15,11 +15,12 @@
 	{{ HTML::style( 'bjsAssets/css/theme-header.css' ) }}
 	{{ HTML::style( 'bjsAssets/css/typicons.css' ) }}
 	{{ HTML::style( 'bjsAssets/css/weathericons.css' ) }}
+	{{ HTML::style( 'bjsAssets/css/media.css' ) }}
 	{{ HTML::style( 'bjsAssets/css/plugins/date-picker/datepicker.css' ) }}
 	{{ HTML::style( 'packages/bootstrap-select/dist/css/bootstrap-select.css' ) }}
 
 </head>
-<body>
+<body onresize="onResize()">
 
 	@yield( 'navigator' )
 
@@ -30,7 +31,7 @@
 	</div>
 
 	@section( 'script_files' )
-		{{ HTML::script( 'bjsAssets/scripts/jquery-2.0.3.min.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/jquery-1.10.2.js' ) }}
 
 		{{ HTML::script( 'packages/bootstrap/dist/js/bootstrap.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/plugins/date-picker/bootstrap-datepicker.js' ) }}
@@ -56,7 +57,7 @@
 		{{ HTML::script( 'bjsAssets/scripts/bjsas/app.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/bjsas/controllers.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/bjsas/services.js' ) }}
-		<!-- {{ HTML::script( 'bjsAssets/scripts/bjsas/filters.js' ) }} -->
+		{{ HTML::script( 'bjsAssets/scripts/bjsas/filters.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/bjsas/directives.js' ) }}
 
 		{{ HTML::script( 'packages/bootstrap-select/dist/js/bootstrap-select.js' ) }}
@@ -64,6 +65,15 @@
 	@show
 </body>
 <script type="text/javascript">
+	var menucompact = $("#sidebar").hasClass("menu-compact");
+	var onResize = function () {
+		if( !menucompact ) {
+			$('#sidebar').addClass( 'menu-compact' );
+		}
+		if( window.outerWidth > 767 ) {
+			$('#sidebar').removeClass( 'menu-compact' );
+		}
+	}
 	$(function () {
 		angular.module("bjsApp").constant("CSRF_TOKEN", '<?php echo csrf_token(); ?>');
 
@@ -97,10 +107,16 @@
 
 		$('#payperiod').datepicker( { } );
 
+
 		$(".sidebar-toggler").on("click", function() {
 			return $("#sidebar").toggleClass("hide"), $(".sidebar-toggler").toggleClass("active"), !1
 		});
 		var n = $("#sidebar").hasClass("menu-compact");
+
+		$('#sidebar').removeClass( 'menu-compact' );
+		if( window.outerWidth <= 767 && !menucompact ) {
+			$('#sidebar').addClass( 'menu-compact' );
+		}
 		$("#sidebar-collapse").on("click", function() {
 			$("#sidebar").is(":visible") || $("#sidebar").toggleClass("hide");
 			$("#sidebar").toggleClass("menu-compact");
@@ -113,6 +129,7 @@
 				u, r, f;
 			if (i && i.length != 0) {
 				if (!i.hasClass("menu-dropdown")) return n && i.get(0).parentNode.parentNode == this && (u = i.find(".menu-text").get(0), t.target != u && !$.contains(u, t.target)) ? !1 : void 0;
+				console.log(i.get(0).parentNode.parentNode);
 				if (r = i.next().get(0), !$(r).is(":visible")) {
 					if (f = $(r.parentNode).closest("ul"), n && f.hasClass("sidebar-menu")) return;
 					f.find("> .open > .submenu").each(function() {

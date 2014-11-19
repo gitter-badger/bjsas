@@ -33,10 +33,11 @@
                         <li>
                             <a class="login-area dropdown-toggle avatar" data-toggle="dropdown">
                                 <img src="bjsAssets/images/xanderdwyl.jpeg">
-                                <span class="profile">Alexjander Bacalso</span>
+                                <span class="profile hidden-xs">Alexjander Bacalso</span>
                             </a>
                             <!--Login Area Dropdown-->
                             <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                <li class="visible-xs text-center"><a>Alexjander Bacalso</a></li>
                                 <li class="email"><a>{{ Auth::user()->email_address }}</a></li>
                                 <!--Avatar Area-->
                                 <li>

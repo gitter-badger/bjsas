@@ -19,7 +19,7 @@ class CreateEmployeesTable extends Migration {
 			$table->string('lastname', 100);
             $table->datetime('birth_date');
 			$table->string('home_address', 200);
-			$table->string('gender', 1);
+			$table->string('gender', 6);
             $table->datetime('hired_date');
 			$table->timestamps();
 			$table->softDeletes();

@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('EmployeeUserSalaryTableSeeder');
 
-		// if( App::environment() === 'local' ) {
-			// $this->call('PayrollTableSeeder');
-		// }
+		if( App::environment() === 'local' ) {
+			$this->call('PayrollTableSeeder');
+		}
 	}
 
 }
