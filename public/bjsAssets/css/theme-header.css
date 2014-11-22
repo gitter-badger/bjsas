@@ -741,7 +741,6 @@ display: block!important;
   border-radius    : 0 0 6px 6px;
   text-align       : center;
   min-height       : 30px;
-  background-color : #f0eae3;
 }
 .widget-item.ng-scope:nth-child( odd ) {
   background-color : #fcfcfc;
@@ -1090,9 +1089,11 @@ input[type="color"] {
   component: form
 ========================================================================== */
 form.form-group {
-  overflow : hidden;
+  overflow : visible;
   height   : auto;
   border   : 1px solid #c7c7c7;
+  margin   : 0;
+  padding  : 10px 0;
 }
 /* ========================================================================
   component: label
@@ -1589,6 +1590,9 @@ background-image: linear-gradient(linear,left to bottom,left bottom,from(#ed1c24
 }
 .border-white {
   border : 1px solid #ffffff;
+}
+.btn-default-width {
+  min-width: 100px;
 }
 .buttons-preview .btn, .buttons-preview .btn-group {
   margin-bottom: 10px;

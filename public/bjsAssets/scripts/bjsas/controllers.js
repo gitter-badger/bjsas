@@ -5,6 +5,7 @@ angular.module('controllers', ['angularMoment'])
 		$scope.totalDeduction = 0;
 		$scope.daysofworked   = 0;
 		$scope.label          = [];
+		$scope.requestResult  = {}
 
 		$scope.init = function () {
 			Employees.get().then( function( response, status) {
@@ -31,6 +32,14 @@ angular.module('controllers', ['angularMoment'])
 						$scope.computeSalary();
 					}
 				} );
+		};
+
+		$scope.createEmployee = function( data ) {
+			data = data || {};
+			Employees.create( data )
+				.then( function( response, status ) {
+					$scope.requestResult = response.data;
+				});
 		};
 
 		$scope.leaveLabel = function ( deduction ) {
@@ -64,6 +73,12 @@ angular.module('controllers', ['angularMoment'])
 			$scope.workedinhr = parseInt($scope.daysofworked, 10) * 8;
 			$scope.subtotal   = $scope.workedinhr * $scope.salaryperhr;
 			$scope.netincome  = $scope.subtotal - $scope.totalDeduction;
+		};
+		$scope.showContent = function ( template ) {
+			$scope.template = template;
+		};
+		$scope.btnCancel = function ( button ) {
+			$scope.showButton = button;
 		};
 
 	} );

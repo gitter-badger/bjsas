@@ -7,7 +7,12 @@ angular.module('services', ['angularMoment'])
 				return $http.get('/api/v1/employee/' + query);
 			},
 			create : function( data ) {
-				return $http.post('/api/v1/employee/', data);
+				return $http({
+					method: 'POST',
+					url: '/api/v1/employee?',
+					headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
+					data: $.param(data)
+				});
 			},
 			delete : function(id) {
 				return $http.delete('/api/v1/employee/' + id);

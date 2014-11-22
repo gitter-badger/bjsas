@@ -26,7 +26,6 @@ Route::filter('api.auth', function () {
 	}
 });
 
-
 Route::get('routes', function() {
 	$routeCollection = Route::getRoutes();
 

@@ -1,0 +1,133 @@
+<div class="col-xs-12">
+    <div class="widget">
+        <div class="widget-header bordered-bottom bordered-themesecondary">
+            <i class="widget-icon typcn typcn-contacts themesecondary"></i>
+            <span class="widget-caption themesecondary">Add Employees</span>
+        </div>
+        <div class="widget-body">
+            <div class="widget-workspace">
+                <form class="form-group row" method="POST" accept-charset="UTF-8">
+                    <input name="_token" type="hidden" value="{{csrf_token}}">
+                    <div class="col-xs-12 no-padding">
+                        <div class="col-xs-12 col-sm-6 col-lg-3 no-padding">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>First Name</span>
+                                    <span class="text-danger" ng-show="requestResult.errors.firstName">{{requestResult.errors.firstName[0]}}</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control" placeholder="First Name" name="firstname" ng-model="employee.firstName">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-3 no-padding">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>Last Name</span>
+                                    <span class="text-danger" ng-show="requestResult.errors.lastName">{{requestResult.errors.lastName[0]}}</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right has-error" data-toggle="tooltip" data-placement="right" data-original-title="Thi is my error test application " tooltip-show>
+                                        <input type="text" class="form-control" placeholder="Last Name" name="lastname" ng-model="employee.lastName">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>Gender</span>
+                                    <span class="text-danger" ng-show="requestResult.errors.gender">{{requestResult.errors.gender[0]}}</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <select select-picker class="show-tick show-menu-arrow has-error" data-width="100%" name='gender' ng-model="employee.gender" data-toggle="tooltip" data-placement="top-right" data-original-title="Thi is my error test application" tooltip-show>
+                                        <option value="">-- select --</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>Birth Date</span>
+                                    <span class="text-danger" ng-show="requestResult.errors.birthDate">{{requestResult.errors.birthDate[0]}}</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control" placeholder="07/12/1985" name='birthDate' ng-model="employee.birthDate">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>Hired Date</span>
+                                    <span class="text-danger" ng-show="requestResult.errors.hiredDate">{{requestResult.errors.hiredDate[0]}}</span>
+                                </label>
+                                <div class="col-sm-12">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control" placeholder="07/12/1985" name='hiredDate' ng-model="employee.hiredDate">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 no-padding">
+                        <div class="col-xs-12 col-sm-6 col-lg-6 no-padding">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>Home Address</span>
+                                    <span class="text-danger" ng-show="requestResult.errors.homeAddress">{{requestResult.errors.homeAddress[0]}}</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control" placeholder="Cebu City, Philippines" name='homeAddress' ng-model="employee.homeAddress">
+                                        <i class="fa fa-globe"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>Salary Rate</span>
+                                    <span class="text-danger" ng-show="requestResult.errors.salary">{{requestResult.errors.salary[0]}}</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control" placeholder="PHP 0.00" name='salary' ng-model="employee.salary">
+                                        <i class="fa fa-money"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <hr class="wide"></hr>
+                    </div>
+                    <div class="col-xs-12 no-padding">
+                        <div class="buttons-preview pull-right">
+                            <button class="btn btn-default shiny border-white btn-default-width" ng-click="showContent( )">Cancel</button>
+                            <button class="btn btn-blue shiny border-white btn-default-width" ng-click="createEmployee(employee)">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // $(function () {
+    //     $("[data-toggle='tooltip']").tooltip( 'show' );
+    // } );
+</script>

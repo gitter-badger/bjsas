@@ -28,16 +28,27 @@
                         </h1>
                     </div>
                 </div>
+
                 <div class="page-body" ng-controller="employeesController" data-ng-init="init()">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="row no-margin">
+                                <div class="well text-danger" ng-hide="requestResult.type==success">Sorry, I can't proceed with errors! This useful information is highly needed.</div>
+                            </div>
+                            <div class="row no-margin ">
+                                <div class="buttons-preview pull-right">
+                                    <div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/registration.html' )" ng-hide='template'>Add Employee</div>
+                                </div>
+                                <div show-template template="@{{template}}"></div>
+                                <div ng-repeat="error in errors"></div>
+                            </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <div class="widget">
+                                    <div class="widget animated fadeInDown">
                                         <div class="widget-header bordered-bottom bordered-themesecondary">
                                             <i class="widget-icon typcn typcn-contacts themesecondary"></i>
                                             <span class="widget-caption themesecondary">List of Employees</span>
-                                        </div><!--Widget Header-->
+                                        </div>
                                         <div class="widget-body">
                                             <div class="widget-main no-padding">
                                                 <div class="widget-workspace">
@@ -101,14 +112,6 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="widget-item text-center">
-                                                            <div class="row no-margin">
-                                                                <div class="buttons-preview">
-                                                                    <a href="" class="btn btn-palegreen shiny border-white" ng-click="template='regform.html'">Add Employee</a>
-                                                                </div>
-                                                                <div class="row" ng-include src="template"></div>
-                                                            </div>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -122,97 +125,4 @@
             </div>
         </div>
     </div>
-    <script type="text/ng-template" id="regform.html">
-        <form class="form-group">
-            <div class="col-xs-12 no-padding">
-                <div class="col-xs-12 col-sm-6 col-lg-3 no-padding">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">First Name</label>
-                        <div class="col-sm-12 no-padding-right">
-                            <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="First Name">
-                                <i class="fa fa-user"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-3 no-padding">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">Last Name</label>
-                        <div class="col-sm-12 no-padding-right">
-                            <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="Last Name">
-                                <i class="fa fa-user"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">Gender</label>
-                        <div class="col-sm-12 no-padding-right">
-                            <select class="sp-employee show-tick show-menu-arrow" data-width="100%" name='employee_id'>
-                                <option value="">-- select --</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">Birth Date</label>
-                        <div class="col-sm-12 no-padding-right">
-                            <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="07/12/1985">
-                                <i class="fa fa-calendar"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">Hired Date</label>
-                        <div class="col-sm-12">
-                            <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="07/12/1985">
-                                <i class="fa fa-calendar"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 no-padding">
-                <div class="col-xs-12 col-sm-6 col-lg-6 no-padding">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">Hired Date</label>
-                        <div class="col-sm-12 no-padding-right">
-                            <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="Cebu City, Philippines">
-                                <i class="fa fa-globe"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
-                    <div class="form-group">
-                        <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">Salary Rate</label>
-                        <div class="col-sm-12 no-padding-right">
-                            <span class="input-icon icon-right">
-                                <input type="text" class="form-control" placeholder="07/12/1985">
-                                <i class="fa fa-money"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 no-padding">
-                <div class="buttons-preview pull-right">
-                    <a href="" class="btn btn-warning shiny border-white">Cancel</a>
-                    <a href="" class="btn btn-palegreen shiny border-white">Save</a>
-                </div>
-            </div>
-        </form>
-    </script>
 @stop

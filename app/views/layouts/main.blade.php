@@ -64,7 +64,11 @@
 		@yield( 'footer_scripts' )
 	@show
 </body>
+
 <script type="text/javascript">
+
+	angular.module("bjsApp").constant("CSRF_TOKEN", '<?php echo csrf_token(); ?>');
+
 	var menucompact = $("#sidebar").hasClass("menu-compact");
 	var onResize = function () {
 		if( !menucompact ) {
@@ -74,8 +78,8 @@
 			$('#sidebar').removeClass( 'menu-compact' );
 		}
 	}
+
 	$(function () {
-		angular.module("bjsApp").constant("CSRF_TOKEN", '<?php echo csrf_token(); ?>');
 
 		var formatTwo = function ( ) {
 			return ( arguments[ 0 ] < 10 ) ? '0' + arguments[0] : arguments[0];
@@ -99,7 +103,7 @@
 			format         : 'mm/dd/yyyy'
 		} );
 
-		$("[data-toggle='tooltip']").tooltip( 'show' );
+
 
 		$(".sp-employee").selectpicker({
 			'size' : 10

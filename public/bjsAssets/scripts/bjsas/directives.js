@@ -26,6 +26,31 @@ angular.module('directives', [])
 			};
 		}
 	] )
+	.directive( 'showTemplate', function ( CSRF_TOKEN ) {
+		return {
+			scope    : true,
+			template : '<div ng-include="contentUrl" class="row animated fadeInDown ng-scope"></div>',
+
+			link : function(scope, element, attrs) {
+				attrs.$observe( 'template', function( tpl ){
+					scope.contentUrl = '';
+					if( angular.isDefined( tpl ) ) {
+						scope.contentUrl = tpl;
+						scope.csrf_token = CSRF_TOKEN;
+					}
+				} );
+			},
+		};
+	} )
+	.directive('tooltipShow', function(){
+		return {
+			restrict: 'A',
+			link: function(scope, element, attrs){
+				$(element).tooltip('show');
+			}
+
+		};
+	} )
 	.directive('leavePlurality', function () {
 		return {
 			template : 'Total no. of hour{{label.leave}} on leave'
