@@ -36,7 +36,6 @@ angular.module('controllers', ['angularMoment'])
 		};
 
 		$scope.createEmployee = function( data ) {
-			console.log( data );
 			data = data || {};
 			Employees.create( data )
 				.then( function( response, status ) {
@@ -44,6 +43,8 @@ angular.module('controllers', ['angularMoment'])
 					if( response.data.type==='error' ) {
 						response.data.message = 'Sorry, I can\'t proceed with errors! This useful information is highly needed.';
 						response.data.icon = 'fa-bolt';
+					} else {
+						$scope.init();
 					}
 
 					$scope.requestResult = response.data;
