@@ -33,7 +33,7 @@
                         <li>
                             <a class="login-area dropdown-toggle avatar" data-toggle="dropdown">
                                 <img src="bjsAssets/images/xanderdwyl.jpeg">
-                                <span class="profile hidden-xs">Alexjander Bacalso</span>
+                                <span class="profile hidden-xs">{{Auth::User()->getAuthUserName()}}</span>
                             </a>
                             <!--Login Area Dropdown-->
                             <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">

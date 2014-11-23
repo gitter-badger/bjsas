@@ -19,6 +19,7 @@
                             <a href="#">Home</a>
                         </li>
                         <li class="active">Dashboard</li>
+                        <li>{{App::Environment()}}</li>
                     </ul>
                 </div>
                 <div class="page-header position-relative">

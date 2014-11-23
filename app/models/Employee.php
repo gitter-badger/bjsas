@@ -15,15 +15,15 @@ class Employee extends Eloquent {
 	);
 
 	public function salary_rates() {
-		return $this->hasMany('salaryrate','emp_id')->where( 'status', '=', 1);
+		return $this->hasMany('SalaryRate','emp_id')->where( 'status', '=', 1);
 	}
 
 	public function rates() {
-		return $this->belongsToMany('salaryrate');
+		return $this->belongsToMany('SalaryRate');
 	}
 
 	public function users() {
-		return $this->hasMany('user');
+		return $this->hasMany('User');
 	}
 
 }

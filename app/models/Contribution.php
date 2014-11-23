@@ -8,6 +8,6 @@ class Contribution extends Eloquent {
 	}
 
 	public function payrolls() {
-		return $this->belongsTo('payroll', 'payroll_id');
+		return $this->belongsTo('Payroll', 'payroll_id');
 	}
 }

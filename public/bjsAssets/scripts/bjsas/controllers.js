@@ -5,7 +5,7 @@ angular.module('controllers', ['angularMoment'])
 		$scope.totalDeduction = 0;
 		$scope.daysofworked   = 0;
 		$scope.label          = [];
-		$scope.requestResult  = {}
+		$scope.requestResult  = {};
 
 		$scope.init = function () {
 			Employees.get().then( function( response, status) {

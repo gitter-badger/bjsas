@@ -37,9 +37,9 @@ class TransactionQuery {
 		$salaryrate = new SalaryRate;
 		$salaryrate->updateSalaryRate( $id );				// update status of the current salary rate
 
-		$salaryrate->amount     = Input::get('salary');
-		$salaryrate->status     = 1;
-		$salaryrate->emp_id     = $id;
+		$salaryrate->amount = Input::get('salary');
+		$salaryrate->status = 1;
+		$salaryrate->emp_id = $id;
 		$salaryrate->save();
 	}
 
@@ -49,10 +49,6 @@ class TransactionQuery {
 			$salaryQuery = Employee::with('salary_rates')->where('id', '=', $emp_id)->first();
 		} else {
 			$salaryQuery = Employee::with('salary_rates')->get();
-
-			foreach ($salaryQuery as $key => $value) {
-				# code...
-			}
 		}
 		return $salaryQuery;
 	}
