@@ -12,36 +12,24 @@
             @include( 'includes.sidebar', array('fieldActive'=>'Employees', 'subfield'=>'list') )
 
             <div class="page-content">
-                <div class="page-breadcrumbs breadcrumbs-fixed">
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="fa fa-home"></i>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="active">Employees</li>
-                    </ul>
-                </div>
-                <div class="page-header position-relative">
-                    <div class="header-title">
-                        <h1>
-                            Employees
-                        </h1>
-                    </div>
-                </div>
+                @include( 'includes.breadcrumbs', array('crumbs'=>'Employees', 'subcrumbs'=>'List of Employees') )
 
                 <div class="page-body" ng-controller="employeesController" data-ng-init="init()">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="row no-margin">
-                                <div class="well text-danger" ng-hide="requestResult.type==success">Sorry, I can't proceed with errors! This useful information is highly needed.</div>
-                            </div>
                             <div class="row no-margin ">
                                 <div class="buttons-preview pull-right">
                                     <div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/registration.html' )" ng-hide='template'>Add Employee</div>
                                 </div>
-                                <div show-template template="@{{template}}"></div>
-                                <div ng-repeat="error in errors"></div>
+                                <div ng-show="requestResult" id="toast-container" class="toast-top-right message-box">
+                                    <div class="toast @{{requestResult.icon}} toast-@{{requestResult.type}}">
+                                        <button class="toast-close-button fa-times"></button>
+                                        <div class="toast-message">@{{requestResult.message}}</div>
+                                    </div>
+                                </div>
+                                <div show-template reg-template="@{{template}}"></div>
                             </div>
+
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="widget animated fadeInDown">
@@ -82,7 +70,7 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="widget-item" ng-repeat="employee in employees">
+                                                        <li class="widget-item" ng-repeat="employee in employees" show-employee>
                                                             <div class="row">
                                                                 <div class="col-lg-1 col-sm-12 text-center">
                                                                     <span>@{{employee.id}}</span>
@@ -123,6 +111,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="toast-container" class="toast-top-right" ng-hide="requestResult.type==success">
+        <div class="toast fa-bolt toast-danger">
+            <button class="toast-close-button">×</button>
+            <div class="toast-message">Something Went Wrong!</div>
         </div>
     </div>
 @stop

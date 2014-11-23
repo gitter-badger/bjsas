@@ -37,8 +37,8 @@
                             </a>
                             <!--Login Area Dropdown-->
                             <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
-                                <li class="visible-xs text-center"><a>Alexjander Bacalso</a></li>
-                                <li class="email"><a>{{ Auth::user()->email_address }}</a></li>
+                                <li class="visible-xs text-center"><a>{{Auth::User()->getAuthUserName()}}</a></li>
+                                <li class="email"><a>{{ Auth::User()->getReminderEmail() }}</a></li>
                                 <!--Avatar Area-->
                                 <li>
                                     <div class="avatar-area">

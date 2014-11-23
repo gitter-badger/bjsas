@@ -5,7 +5,8 @@ angular.module('controllers', ['angularMoment'])
 		$scope.totalDeduction = 0;
 		$scope.daysofworked   = 0;
 		$scope.label          = [];
-		$scope.requestResult  = {};
+		$scope.requestOff     = true;
+		$scope.requestResult;
 
 		$scope.init = function () {
 			Employees.get().then( function( response, status) {
@@ -35,9 +36,16 @@ angular.module('controllers', ['angularMoment'])
 		};
 
 		$scope.createEmployee = function( data ) {
+			console.log( data );
 			data = data || {};
 			Employees.create( data )
 				.then( function( response, status ) {
+					response.data.icon = 'fa-check';
+					if( response.data.type==='error' ) {
+						response.data.message = 'Sorry, I can\'t proceed with errors! This useful information is highly needed.';
+						response.data.icon = 'fa-bolt';
+					}
+
 					$scope.requestResult = response.data;
 				});
 		};

@@ -12,23 +12,8 @@
             @include( 'includes.sidebar', array('fieldActive'=>'Dashboard', 'subfield'=>'') )
 
             <div class="page-content">
-                <div class="page-breadcrumbs breadcrumbs-fixed">
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="fa fa-home"></i>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="active">Dashboard</li>
-                        <li>{{App::Environment()}}</li>
-                    </ul>
-                </div>
-                <div class="page-header position-relative">
-                    <div class="header-title">
-                        <h1>
-                            Dashboard
-                        </h1>
-                    </div>
-                </div>
+                @include( 'includes.breadcrumbs', array('crumbs'=>'Dashboard', 'subcrumbs'=>'') )
+
                 <div class="page-body">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

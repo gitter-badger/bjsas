@@ -44,6 +44,7 @@
 		{{ HTML::script( 'bjsAssets/scripts/plugins/flot/jquery.flot.pie.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/plugins/flot/jquery.flot.tooltip.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/plugins/flot/jquery.flot.orderBars.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/plugins/toastr/toastr.js' ) }}
 
 		<!-- angular packages -->
 		{{ HTML::script( 'packages/angular/angular.js' ) }}
@@ -77,6 +78,15 @@
 		if( window.outerWidth > 767 ) {
 			$('#sidebar').removeClass( 'menu-compact' );
 		}
+	}
+
+	var Notify = function (n, t, i, r, u, f) {
+	    toastr.options.positionClass = "toast-" + t;
+	    toastr.options.extendedTimeOut = 0;
+	    toastr.options.timeOut = i;
+	    toastr.options.closeButton = f;
+	    toastr.options.iconClass = u + " toast-" + r;
+	    toastr.custom(n)
 	}
 
 	$(function () {
