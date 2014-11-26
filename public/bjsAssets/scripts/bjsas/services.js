@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('services', ['angularMoment'])
+angular.module('services', ['angularMoment', 'ngAnimate'])
 	.factory('Employees', function($http) {
 		return {
 			get : function( query ) {
@@ -15,10 +15,36 @@ angular.module('services', ['angularMoment'])
 				});
 			},
 			delete : function(id) {
-				return $http.delete('/api/v1/employee/' + id);
+				return $http.delete('/api/v1/employee/' + id)
+					success(function(data, status, headers, config) {
+						console.log( data );
+						console.log( status );
+					}).
+					error(function(data, status, headers, config) {
+						console.log( data );
+						console.log( status );
+					});
 			}
 		};
 	} )
+	.service('toaster', ['$rootScope', function ($rootScope) {
+
+		this.pop = function (type, title, body, timeout, bodyOutputType, clickHandler) {
+			this.toast = {
+				type           : type,
+				title          : title,
+				body           : body,
+				timeout        : timeout,
+				bodyOutputType : bodyOutputType,
+				clickHandler   : clickHandler
+			};
+
+			$rootScope.$broadcast('toaster-newToast');
+		};
+		this.clear = function () {
+			$rootScope.$broadcast('toaster-clearToasts');
+		};
+	}])
 	.factory('DaysWorked', function() {
 		return {
 			count : function ( dateworked ) {

@@ -18,16 +18,13 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row no-margin ">
-                                <div class="buttons-preview pull-right">
-                                    <div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/registration.html' )" ng-hide='template'>Add Employee</div>
-                                </div>
-                                <div ng-show="requestResult" id="toast-container" class="toast-top-right message-box">
-                                    <div class="toast @{{requestResult.icon}} toast-@{{requestResult.type}}">
-                                        <button class="toast-close-button fa-times"></button>
-                                        <div class="toast-message">@{{requestResult.message}}</div>
+                                <notification-container toaster-options="{'time-out': 3000}"></notification-container>
+                                @if( Auth::User()->getAcl() === 'Admin' )
+                                    <div class="buttons-preview pull-right">
+                                        <div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/registration.html' )" ng-hide='template'>Add Employee</div>
                                     </div>
-                                </div>
-                                <div show-template reg-template="@{{template}}"></div>
+                                @endif
+                                <div show-template reg-template="@{{template}}" ng-hide='closeTemplate'></div>
                             </div>
 
                             <div class="row">
@@ -95,9 +92,11 @@
                                                                     <span class="divider hidden-xs"></span>
                                                                     <span class="time">@{{employee.hired_date | dateFormat }}</span>
                                                                 </div>
-                                                                <div class="widget-action bg-darkorange">
-                                                                    <i class="fa fa-trash" ng-hide="@{{employee.deleted_at.length}}"></i>
-                                                                </div>
+                                                                @if( Auth::User()->getAcl() === 'Admin' )
+                                                                    <div class="widget-action bg-darkorange">
+                                                                        <i class="fa fa-trash" ng-hide="@{{employee.deleted_at.length}}" ng-click="removeEmployee( employee )"></i>
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -111,12 +110,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div id="toast-container" class="toast-top-right" ng-hide="requestResult.type==success">
-        <div class="toast fa-bolt toast-danger">
-            <button class="toast-close-button">×</button>
-            <div class="toast-message">Something Went Wrong!</div>
         </div>
     </div>
 @stop

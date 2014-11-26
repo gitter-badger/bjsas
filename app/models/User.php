@@ -4,10 +4,14 @@ use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait;
+	use UserTrait, RemindableTrait, SoftDeletingTrait;
+
+	protected $softDelete = true;
 
 	/**
 	 * The database table used by the model.
@@ -34,16 +38,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->getKey();
 	}
-
 	public function getAuthUserName() {
 		return $this->employees->firstname . ' ' . $this->employees->lastname;
 	}
-
+	public function getEmployeeId() {
+		return $this->employees->id;
+	}
+	public function getAcl() {
+		return $this->rights;
+	}
 	public function getReminderEmail()
 	{
 		return $this->email_address;
 	}
-
 	public function employees() {
 		return $this->belongsTo('Employee', 'emp_id');
 	}

@@ -1,6 +1,16 @@
 <?php
 class TransactionQuery {
 
+	public static function getUserAcl() {
+
+		$access = false;
+		if( Auth::check() ) {
+			$access = Auth::User()->getAcl() == 'Admin' ? true : false;
+		}
+
+		return $access;
+	}
+
 	public static function addEmployee() {
 		$validator = Validator::make(Input::all(), Employee::$rules);
 
@@ -33,12 +43,33 @@ class TransactionQuery {
 		return $flashMessage;
 	}
 
+	public static function removeEmployee( $id ) {
+
+		$logInEmployeeId = Auth::User()->getEmployeeId();
+		$employee        = Employee::find( $id );
+
+		$deleteMessage = array(
+			'type'    => 'success',
+			'message' => 'Record #: '  . $employee->id . ' is successfully deleted. '
+		);
+
+		if( $logInEmployeeId === $employee->id ) {
+			$deleteMessage = array(
+				'type'    => 'error',
+				'message' => 'You can\'t delete your own profile. Please contact your administrator.'
+			);
+		} else {
+			$employee->delete();
+		}
+
+		return $deleteMessage;
+	}
+
 	public static function addSalary( $id ) {
 		$salaryrate = new SalaryRate;
 		$salaryrate->updateSalaryRate( $id );				// update status of the current salary rate
 
 		$salaryrate->amount = Input::get('salary');
-		$salaryrate->status = 1;
 		$salaryrate->emp_id = $id;
 		$salaryrate->save();
 	}

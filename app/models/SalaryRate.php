@@ -1,6 +1,10 @@
 <?php
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class SalaryRate extends Eloquent {
+	use SoftDeletingTrait;
+
+	protected $softDelete = true;
 
 	public static $rules = array(
 		'emp_id'    => 'required',
@@ -9,8 +13,8 @@ class SalaryRate extends Eloquent {
 	);
 
 	public function updateSalaryRate( $id ) {
-		// set status = 0 for current salary rates
-		DB::table('salary_rates')->where( 'emp_id', '=', $id )->update(array('status' => 0));
+		$salary = SalaryRate::where( 'emp_id', '=', $id );
+		$salary->delete();
 	}
 
 	public function employees( ) {

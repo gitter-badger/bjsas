@@ -49,6 +49,7 @@
 		<!-- angular packages -->
 		{{ HTML::script( 'packages/angular/angular.js' ) }}
 		{{ HTML::script( 'packages/angular-sanitize/angular-sanitize.js' ) }}
+		{{ HTML::script( 'packages/angular-animate/angular-animate.js' ) }}
 		{{ HTML::script( 'packages/angular-route/angular-route.js' ) }}
 		{{ HTML::script( 'packages/underscore/underscore.js' ) }}
 		{{ HTML::script( 'packages/moment/moment.js' ) }}
@@ -56,6 +57,7 @@
 		{{ HTML::script( 'packages/angular-moment/angular-moment.js' ) }}
 
 		{{ HTML::script( 'bjsAssets/scripts/bjsas/app.js' ) }}
+		{{ HTML::script( 'bjsAssets/scripts/bjsas/config.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/bjsas/controllers.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/bjsas/services.js' ) }}
 		{{ HTML::script( 'bjsAssets/scripts/bjsas/filters.js' ) }}

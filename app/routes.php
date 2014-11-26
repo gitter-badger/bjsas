@@ -16,7 +16,11 @@ Route::controller('auth'  , 'AuthController');
 // consumable API routes
 Route::group(array('prefix' => 'api/v1', 'before' => 'api.auth'), function()
 {
-	Route::resource('employee', 'ApiController');
+	if( TransactionQuery::getUserAcl() ) {
+		Route::resource('employee', 'ApiController');
+	} else {
+		Route::resource('employee', 'ApiController', array('only' => array('index','show')));
+	}
 });
 
 // authentication for api

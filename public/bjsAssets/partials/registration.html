@@ -3,6 +3,9 @@
         <div class="widget-header bordered-bottom bordered-themesecondary">
             <i class="widget-icon typcn typcn-contacts themesecondary"></i>
             <span class="widget-caption themesecondary">Add Employees</span>
+            <a href="" class="close pull-right" ng-click="hideContent()">
+                <i class="widget-icon fa fa-times themesecondary"></i>
+            </a>
         </div>
         <div class="widget-body">
             <div class="widget-workspace">
@@ -112,7 +115,7 @@
                     </div>
                     <div class="col-xs-12 no-padding">
                         <div class="buttons-preview pull-right">
-                            <button class="btn btn-default shiny border-white btn-default-width" ng-click="showContent( )">Cancel</button>
+                            <button class="btn btn-default shiny border-white btn-default-width" ng-click="resetContent( )">Reset</button>
                             <button class="btn btn-blue shiny border-white btn-default-width" ng-click="createEmployee(employee)">Save</button>
                         </div>
                     </div>

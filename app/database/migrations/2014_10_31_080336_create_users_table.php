@@ -18,9 +18,10 @@ class CreateUsersTable extends Migration {
 			$table->integer('emp_id')->unsigned();
 			$table->string('email_address', 100);
 			$table->string('password', 100);
+			$table->string('rights', 10);
 			$table->rememberToken();
-			$table->tinyInteger('status');
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 

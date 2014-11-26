@@ -3,8 +3,9 @@
 angular.module('bjsApp', [
 	'ngSanitize',
 	'ngRoute',
-	'controllers',
-	'filters',
+    'config',
+    'controllers',
+    'filters',
 	'services',
 	'directives'
 ]);

@@ -1,8 +1,13 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 class Employee extends Eloquent {
 
-	public $timestamps = true;
+	use SoftDeletingTrait;
+
+	protected $softDelete = true;
+	public $timestamps    = true;
 
 	public static $rules = array(
 		'firstName'   => 'required|alpha_spaces|min:2',
@@ -15,7 +20,7 @@ class Employee extends Eloquent {
 	);
 
 	public function salary_rates() {
-		return $this->hasMany('SalaryRate','emp_id')->where( 'status', '=', 1);
+		return $this->hasMany('SalaryRate','emp_id');
 	}
 
 	public function rates() {
@@ -25,5 +30,4 @@ class Employee extends Eloquent {
 	public function users() {
 		return $this->hasMany('User');
 	}
-
 }

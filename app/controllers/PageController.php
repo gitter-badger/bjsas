@@ -35,8 +35,5 @@ class PageController extends BaseController {
 		$this->layout->content = View::make('pages.routes');
 	}
 
-	public function showPartials() {
-		$this->layout->content = View::make('partials.registration');
-	}
 }
 

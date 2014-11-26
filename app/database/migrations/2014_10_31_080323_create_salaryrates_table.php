@@ -17,7 +17,6 @@ class CreateSalaryratesTable extends Migration {
 			$table->increments('id');
 			$table->integer('emp_id')->unsigned();
 			$table->decimal('amount', 10, 2);
-			$table->tinyInteger('status');
 			$table->timestamps();
 			$table->softDeletes();
 		});

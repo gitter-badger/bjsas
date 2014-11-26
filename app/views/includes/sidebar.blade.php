@@ -50,12 +50,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="elements.html">
+                    <a href="salary">
                         <span class="menu-text">Salary Rate</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="cashadvance">
                         <span class="menu-text">Cash Advances</span>
                     </a>
                 </li>
