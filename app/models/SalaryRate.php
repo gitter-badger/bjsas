@@ -7,14 +7,13 @@ class SalaryRate extends Eloquent {
 	protected $softDelete = true;
 
 	public static $rules = array(
-		'emp_id'    => 'required',
-		'amount'    => 'required',
-		'status'    => 'required'
+		'emp_id' => 'required',
+		'amount' => 'required'
 	);
 
 	public function updateSalaryRate( $id ) {
 		$salary = SalaryRate::where( 'emp_id', '=', $id );
-		$salary->delete();
+		return $salary->delete();
 	}
 
 	public function employees( ) {

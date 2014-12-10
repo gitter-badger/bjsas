@@ -1,29 +1,16 @@
 'use strict';
 
 angular.module('services', ['angularMoment', 'ngAnimate'])
-	.factory('Employees', function($http) {
+	.factory('Api', function($http) {
 		return {
-			get : function( query ) {
-				return $http.get('/api/v1/employee/' + query);
+			get : function( query, model ) {
+				return $http.get('/api/v1/' + model + '/' + query);
 			},
-			create : function( data ) {
-				return $http({
-					method: 'POST',
-					url: '/api/v1/employee?',
-					headers: { 'Content-Type' : 'application/x-www-form-urlencoded' },
-					data: $.param(data)
-				});
+			create : function( data, model ) {
+				return $http.post( '/api/v1/' + model, data);
 			},
-			delete : function(id) {
-				return $http.delete('/api/v1/employee/' + id)
-					success(function(data, status, headers, config) {
-						console.log( data );
-						console.log( status );
-					}).
-					error(function(data, status, headers, config) {
-						console.log( data );
-						console.log( status );
-					});
+			delete : function( id, model) {
+				return $http.delete('/api/v1/' + model + '/' + id)
 			}
 		};
 	} )

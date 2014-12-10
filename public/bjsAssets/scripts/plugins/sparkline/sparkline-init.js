@@ -1,7 +1,6 @@
 var gridbordercolor = "#eee";
 
 var getcolor = function(n) {
-    console.log( n );
     switch (n) {
         default:
             return n;
@@ -37,15 +36,12 @@ var InitiateSparklineCharts = function () {
                     disableHiddenCheck: true,
                     height: $(this).data('height'),
                     width: $(this).data('width'),
-                    fillColor: getcolor($(this).data('fillcolor')),
-                    lineColor: getcolor($(this).data('linecolor')),
-                    spotRadius: $(this).data('spotradius'),
-                    lineWidth: $(this).data('linewidth'),
-                    spotColor: getcolor($(this).data('spotcolor')),
-                    minSpotColor: getcolor($(this).data('minspotcolor')),
-                    maxSpotColor: getcolor($(this).data('maxspotcolor')),
-                    highlightSpotColor: getcolor($(this).data('highlightspotcolor')),
-                    highlightLineColor: getcolor($(this).data('highlightlinecolor'))
+                    barColor: $(this).data('barcolor'),
+                    negBarColor: $(this).data('negbarcolor'),
+                    zeroColor: $(this).data('zerocolor'),
+                    barWidth: $(this).data('barwidth'),
+                    barSpacing: $(this).data('barspacing'),
+                    stackedBarColor: $(this).data('stackedbarcolor')
                 });
             });
             /*Composite Line*/

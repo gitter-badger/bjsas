@@ -66,21 +66,73 @@ class TransactionQuery {
 	}
 
 	public static function addSalary( $id ) {
-		$salaryrate = new SalaryRate;
-		$salaryrate->updateSalaryRate( $id );				// update status of the current salary rate
+		$validator = Validator::make(Input::all(), SalaryRate::$rules);
 
-		$salaryrate->amount = Input::get('salary');
-		$salaryrate->emp_id = $id;
-		$salaryrate->save();
+		$deleteMessage = array(
+			'type'    => 'error',
+			'message' => 'Invalid input!',
+			'errors'  => $validator->errors()
+		);
+
+		if ( $validator->passes() ) {
+
+			$deleteMessage = array(
+				'type'    => 'success',
+				'message' => 'Salary for Employee #: '  . $id . ' is successfully updated. '
+			);
+
+			$salaryrate = new SalaryRate;
+			$isDeleted =$salaryrate->updateSalaryRate( $id );				// update status of the current salary rate
+
+			$salaryrate->amount = Input::get('amount');
+			$salaryrate->emp_id = $id;
+			$salaryrate->save();
+		}
+
+		return $deleteMessage;
+	}
+
+	public static function removeSalary( $id ) {
+
+		$deleteMessage = array(
+			'type'    => 'error',
+			'message' => 'Invalid input!',
+			'errors'  => array( "emp_id" => [ "The id is required." ] )
+		);
+
+		if( $id !== null ) {
+			$deleteMessage = array(
+				'type'    => 'success',
+				'message' => 'Salary for Employee #: '  . $id . ' is successfully deleted. '
+			);
+			$salaryrate = new SalaryRate;
+			$isDeleted =$salaryrate->updateSalaryRate( $id );				// update status of the current salary rate
+		}
+
+		return $deleteMessage;
+
+	}
+
+	public static function getEmployee( $emp_id ) {
+
+		if ( isset($emp_id ) && $emp_id > 0 ) {
+			$salaryQuery = Employee::find($emp_id)->first();
+		} else {
+			$salaryQuery = Employee::get();
+		}
+		return $salaryQuery;
 	}
 
 	public static function getEmployeeCurrentSalary( $emp_id ) {
 
+		$salaryQuery = Employee::with('salary_rates')->has('salary_rates');
+
 		if ( isset($emp_id ) && $emp_id > 0 ) {
-			$salaryQuery = Employee::with('salary_rates')->where('id', '=', $emp_id)->first();
+			$salaryQuery = $salaryQuery->where('id', '=', $emp_id)->first();
 		} else {
-			$salaryQuery = Employee::with('salary_rates')->get();
+			$salaryQuery = $salaryQuery->get();
 		}
+
 		return $salaryQuery;
 	}
 

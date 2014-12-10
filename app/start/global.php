@@ -15,6 +15,7 @@ ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
 	app_path().'/controllers',
+	app_path().'/controllers/api',
 	app_path().'/models',
 	app_path().'/database/seeds',
 	app_path().'/libraries'
@@ -48,7 +49,11 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 App::error(function(Exception $exception, $code)
 {
-	Log::error($exception);
+	if ( strpos(gethostname(), 'local')  ) {
+		Log::error($exception);
+	} else {
+		return Redirect::to('404');
+	}
 });
 
 /*
@@ -93,7 +98,16 @@ require app_path().'/filters.php';
 require app_path().'/validators.php';
 
 
-View::composer('dashboard', function($view)
-{
-    $view->with('count', User::count());
+// View::composer('dashboard', function($view)
+// {
+//     $view->with('count', User::count());
+// });
+
+
+App::missing(function($exception) {
+	return Redirect::to('404');
 });
+
+// App::error(function(Exception $exception) {
+// 	return Redirect::to('404');
+// });

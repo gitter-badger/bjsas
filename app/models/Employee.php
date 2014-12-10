@@ -16,7 +16,7 @@ class Employee extends Eloquent {
 		'birthDate'   => 'required',
 		'hiredDate'   => 'required',
 		'gender'      => 'required|alpha|min:4',
-		'salary'      => 'required'
+		'amount'      => 'required'
 	);
 
 	public function salary_rates() {

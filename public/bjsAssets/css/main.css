@@ -6,6 +6,7 @@ body {
   font-family    : 'Titillium Web', sans-serif;
   font-size      : 13px;
   color          : #444;
+  background-color: #eee;
 }
 body:before {
   content: "";
@@ -16,7 +17,10 @@ body:before {
   left: 0;
   right: 0;
   z-index: -1;
-  background-color: #eee;
+}
+.index-1 {
+  z-index  : 1;
+  position : relative;
 }
 /* ========================================================================
    component: login;

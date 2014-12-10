@@ -31,8 +31,20 @@ class PageController extends BaseController {
 			$this->layout->content = View::make('pages.login');
 	}
 
+	public function showSalary() {
+		$this->layout->content = View::make('pages.salary');
+	}
+
+	public function showCashadvanceForm() {
+		$this->layout->content = View::make('pages.cashadvances');
+	}
+
 	public function showRoute() {
 		$this->layout->content = View::make('pages.routes');
+	}
+
+	public function show404() {
+		$this->layout->content = View::make('errors.404');
 	}
 
 }

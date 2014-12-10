@@ -1,27 +1,45 @@
 'use strict';
 
 angular.module('controllers', [ 'angularMoment' ])
-	.controller('employeesController', function($scope, $element, $timeout, $attrs, $http, Employees, DaysWorked, toaster) {
-		$scope.totalDeduction = 0;
-		$scope.daysofworked   = 0;
-		$scope.label          = [];
-		$scope.requestOff     = true;
-		$scope.requestResult  = false;
-		$scope.closeTemplate  = true;
+	.controller('employeesController', function($scope, $element, $timeout, $attrs, $http, Api, DaysWorked, toaster) {
+		$scope.totalDeduction      = 0;
+		$scope.daysofworked        = 0;
+		$scope.label               = [];
+		$scope.requestOff          = true;
+		$scope.requestResult       = false;
+		$scope.closeTemplate       = true;
+		$scope.employees           = [];
+		$scope.employeesWithSalary = [];
+
+		$scope.hiredMonth = [];
 
 		$scope.init = function () {
+			$scope.getCurrentDate();
 			$scope.getEmployees();
-
+			$scope.getEmployeesWithSalary();
 		};
 
+		$scope.getCurrentDate = function () {
+			$scope.currentDate = new Date();
+		};
 
 		$scope.getEmployees = function( ) {
-			Employees.get().then( function( response, status) {
+			Api.get( 'All', 'employee').then( function( response, status) {
 				$scope.employees = response.data;
+				var collection   = $scope.employees;
+
+				collection.forEach( function ( model ) {
+					$scope.hiredMonth.push( model['hired_date'] );
+				});
 			} );
-		}
+		};
+		$scope.getEmployeesWithSalary = function( ) {
+			Api.get( 'All', 'salary').then( function( response, status) {
+				$scope.employeesWithSalary = response.data;
+			} );
+		};
 		$scope.getEmployeeRecord = function( query ) {
-			Employees.get( query )
+			Api.get( query, 'employee' )
 				.then( function( response, status) {
 					$scope.salaryperhr  = '';
 					$scope.salaryRate   = 0;
@@ -43,7 +61,7 @@ angular.module('controllers', [ 'angularMoment' ])
 
 		$scope.createEmployee = function( data ) {
 			data = data || {};
-			Employees.create( data )
+			Api.create( data, 'employee' )
 				.then( function( response, status ) {
 					response.data.icon = 'fa-check';
 					if( response.data.type==='error' ) {
@@ -57,10 +75,34 @@ angular.module('controllers', [ 'angularMoment' ])
 				});
 		};
 		$scope.removeEmployee = function( data ) {
-			Employees.delete( data.id )
+			Api.delete( data.id, 'employee' )
 				.then( function( response ) {
 					if( response.data.type === 'success' ) {
-						$scope.getEmployees();
+						$scope.employees.splice( $scope.employees.indexOf(data), 1 );
+					}
+					toaster.pop(response.data.type, response.data.message);
+				});
+		};
+		$scope.addSalary = function( data ) {
+			data = data || {};
+			Api.create( data, 'salary' )
+				.then( function( response, status ) {
+					response.data.icon = 'fa-check';
+					if( response.data.type==='error' ) {
+						response.data.message = 'Sorry, I can\'t proceed with errors! This useful information is highly needed.';
+					} else {
+						$scope.getEmployeesWithSalary();
+						$scope.showContent('');
+					}
+					$scope.requestResult = response.data;
+					toaster.pop(response.data.type, response.data.message);
+				});
+		};
+		$scope.removeSalary = function( data ) {
+			Api.delete( data.id, 'salary' )
+				.then( function( response ) {
+					if( response.data.type === 'success' ) {
+						$scope.employeesWithSalary.splice( $scope.employeesWithSalary.indexOf(data), 1 );
 					}
 					toaster.pop(response.data.type, response.data.message);
 				});
@@ -156,6 +198,4 @@ angular.module('controllers', [ 'angularMoment' ])
                 }
             }
         };
-
-
 	} );

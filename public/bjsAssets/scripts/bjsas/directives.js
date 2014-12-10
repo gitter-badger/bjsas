@@ -25,7 +25,7 @@ angular.module('directives', [])
 				}
 			};
 		}
-		] )
+	] )
 	.directive( 'showTemplate', function ( CSRF_TOKEN ) {
 		return {
 			scope    : true,
@@ -47,6 +47,7 @@ angular.module('directives', [])
 		function( $timeout ) {
 			return {
 				restrict: 'A',
+
 				link: function(scope, element, attrs){
 					scope.$watch('requestResult', function( data ) {
 						$(element).removeClass( 'has-error' );
@@ -60,7 +61,6 @@ angular.module('directives', [])
 
 						if( !scope.requestResult ) {
 							$(element).tooltip('hide');
-							console.log(attrs);
 						}
 					});
 				}
@@ -72,6 +72,30 @@ angular.module('directives', [])
 			template : 'Total no. of hour{{label.leave}} on leave'
 		};
 	} )
+	.directive('barChart', ['expenseData', 'salesData', 'barOptions', function ( expenseData, salesData, barOptions ) {
+		return {
+			link: function( scope, elem, attrs ) {
+
+				// get the number of days
+				var month = attrs.currentMonth.split(', ');
+				var daysInMonth = function( month, year ) {
+					return new Date( year, month, 0 ).getDate();
+				}( month[ 0 ], attrs.currentYear );
+
+				var sales = attrs.sales.split(', ');
+				console.log(sales);
+				// update expense data
+				for(var day=1; day<=daysInMonth; day++) {
+					salesData.data.push( [ day, Math.random() ] );
+					expenseData.data.push( [ day, Math.random() ] );
+				}
+
+				barOptions.tooltipOpts.content = '<b>%x - ' + month[1] + '</b><br/><b>%s</b> : <span>%y</span>';
+
+				var plot  = $.plot($(elem), [expenseData,salesData], barOptions);
+			}
+		};
+	}] )
 	.directive('notificationContainer', ['$compile', '$timeout', '$sce', 'toasterConfig', 'toaster',
 		function ($compile, $timeout, $sce, toasterConfig, toaster) {
 		return {

@@ -1,12 +1,12 @@
 <?php
 
-class ApiController extends Controller {
+class EmployeeController extends Controller {
 	public function index()
 	{
-		return 'Hello, to BJS API!';
+		return 'Hello, to Employee - BJS API!';
 	}
 	public function show( $id = null ) {
-		return Response::json(TransactionQuery::getEmployeeCurrentSalary( $id ));
+		return Response::json(TransactionQuery::getEmployee( $id ));
 	}
 	public function store( ) {
 		return Response::json(TransactionQuery::addEmployee( ));

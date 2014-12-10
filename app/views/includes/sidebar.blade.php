@@ -49,12 +49,12 @@
                         <span class="menu-text">List of Employees</span>
                     </a>
                 </li>
-                <li>
+                <li class="{{$subfield=='salary' ? 'active' : ''}}">
                     <a href="salary">
                         <span class="menu-text">Salary Rate</span>
                     </a>
                 </li>
-                <li>
+                <li class="{{$subfield=='cashadvance' ? 'active' : ''}}">
                     <a href="cashadvance">
                         <span class="menu-text">Cash Advances</span>
                     </a>

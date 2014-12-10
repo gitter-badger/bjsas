@@ -21,7 +21,7 @@
                                 <notification-container toaster-options="{'time-out': 3000}"></notification-container>
                                 @if( Auth::User()->getAcl() === 'Admin' )
                                     <div class="buttons-preview pull-right">
-                                        <div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/registration.html' )" ng-hide='template'>Add Employee</div>
+                                        <div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/addEmployees.html' )" ng-hide='template'>Add Employee</div>
                                     </div>
                                 @endif
                                 <div show-template reg-template="@{{template}}" ng-hide='closeTemplate'></div>
@@ -29,7 +29,7 @@
 
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <div class="widget animated fadeInDown">
+                                    <div class="widget">
                                         <div class="widget-header bordered-bottom bordered-themesecondary">
                                             <i class="widget-icon typcn typcn-contacts themesecondary"></i>
                                             <span class="widget-caption themesecondary">List of Employees</span>
@@ -67,7 +67,7 @@
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="widget-item" ng-repeat="employee in employees" show-employee>
+                                                        <li class="widget-item" ng-repeat="employee in employees">
                                                             <div class="row">
                                                                 <div class="col-lg-1 col-sm-12 text-center">
                                                                     <span>@{{employee.id}}</span>

@@ -10,6 +10,9 @@ Route::get('/employee'	  , 'PageController@showEmployee');
 Route::get('/salary'	  , 'PageController@showSalary');
 Route::get('/payroll'	  , 'PageController@showPayrollForm');
 Route::get('/cashadvance' , 'PageController@showCashadvanceForm');
+Route::get('/404'         , 'PageController@show404');
+Route::post('/404'        , 'PageController@show404');
+Route::delete('/404'      , 'PageController@show404');
 
 Route::controller('auth'  , 'AuthController');
 
@@ -17,9 +20,10 @@ Route::controller('auth'  , 'AuthController');
 Route::group(array('prefix' => 'api/v1', 'before' => 'api.auth'), function()
 {
 	if( TransactionQuery::getUserAcl() ) {
-		Route::resource('employee', 'ApiController');
+		Route::resource('employee', 'EmployeeController');
+		Route::resource('salary', 'SalaryController');
 	} else {
-		Route::resource('employee', 'ApiController', array('only' => array('index','show')));
+		Route::resource('employee', 'EmployeeController', array('only' => array('index','show')));
 	}
 });
 

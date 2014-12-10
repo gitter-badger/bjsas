@@ -1,124 +1,21 @@
-var gridbordercolor = "#eee";
-
-var InitiateFlotBarChart = function () {
-    return {
-        init: function () {
-            var data2 = [{
-                color: themesecondary,
-                label: "Direct Visits",
-                data: [[3, 2], [4, 5], [5, 4], [6, 11], [7, 12], [8, 11], [9, 8], [10, 14], [11, 12], [12, 16], [13, 9],
-                [14, 10], [15, 14], [16, 15], [17, 9]],
-
-                lines: {
-                    show: true,
-                    fill: true,
-                    lineWidth: .1,
-                    fillColor: {
-                        colors: [{
-                            opacity: 0
-                        }, {
-                            opacity: 0.4
-                        }]
-                    }
-                },
-                points: {
-                    show: false
-                },
-                shadowSize: 0
-            },
-                {
-                    color: themeprimary,
-                    label: "Referral Visits",
-                    data: [[3, 10], [4, 13], [5, 12], [6, 16], [7, 19], [8, 19], [9, 24], [10, 19], [11, 18], [12, 21], [13, 17],
-                    [14, 14], [15, 12], [16, 14], [17, 15]],
-                    bars: {
-                        order: 1,
-                        show: true,
-                        borderWidth: 0,
-                        barWidth: 0.4,
-                        lineWidth: .5,
-                        fillColor: {
-                            colors: [{
-                                opacity: 0.4
-                            }, {
-                                opacity: 1
-                            }]
-                        }
-                    }
-                },
-                {
-                    color: themethirdcolor,
-                    label: "Search Engines",
-                    data: [[3, 14], [4, 11], [5, 10], [6, 9], [7, 5], [8, 8], [9, 5], [10, 6], [11, 4], [12, 7], [13, 4],
-                    [14, 3], [15, 4], [16, 6], [17, 4]],
-                    lines: {
-                        show: true,
-                        fill: false,
-                        fillColor: {
-                            colors: [{
-                                opacity: 0.3
-                            }, {
-                                opacity: 0
-                            }]
-                        }
-                    },
-                    points: {
-                        show: true
-                    }
-                }
-            ];
-            var options = {
-                legend: {
-                    show: false
-                },
-                xaxis: {
-                    tickDecimals: 0,
-                    color: '#f3f3f3'
-                },
-                yaxis: {
-                    min: 0,
-                    color: '#f3f3f3',
-                    tickFormatter: function (val, axis) {
-                        return "";
-                    },
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: false,
-                    borderWidth: 0,
-                    aboveData: false,
-                    color: '#fbfbfb'
-
-                },
-                tooltip: true,
-                tooltipOpts: {
-                    defaultTheme: false,
-                    content: " <b>%x May</b> , <b>%s</b> : <span>%y</span>",
-                }
-            };
-            var placeholder = $("#bar-chart");
-            var plot = $.plot(placeholder, data2, options);
-        }
-    };
-
-}();
+var gridbordercolor = "#c2c2cb";
 
 var InitiateFlotSelectableChart = function () {
     return {
         init: function () {
 
             var data = [{
-                color: themeprimary,
+                color: themeBar,
                 label: "Windows",
                 data: [[1990, 18.9], [1991, 18.7], [1992, 18.4], [1993, 19.3], [1994, 19.5], [1995, 19.3], [1996, 19.4], [1997, 20.2], [1998, 19.8], [1999, 19.9], [2000, 20.4], [2001, 20.1], [2002, 20.0], [2003, 19.8], [2004, 20.4]]
             }
             , {
-                color: themethirdcolor,
+                color: themeLineGraph,
                 label: "Linux",
                 data: [[1990, 10.0], [1991, 11.3], [1992, 9.9], [1993, 9.6], [1994, 9.5], [1995, 9.5], [1996, 9.9], [1997, 9.3], [1998, 9.2], [1999, 9.2], [2000, 9.5], [2001, 9.6], [2002, 9.3], [2003, 9.4], [2004, 9.79]]
             }
             , {
-                color: themesecondary,
+                color: themeBgGraph,
                 label: "Mac OS",
                 data: [[1990, 5.8], [1991, 6.0], [1992, 5.9], [1993, 5.5], [1994, 5.7], [1995, 5.3], [1996, 6.1], [1997, 5.4], [1998, 5.4], [1999, 5.1], [2000, 5.2], [2001, 5.4], [2002, 6.2], [2003, 5.9], [2004, 5.89]]
             }, {
@@ -259,7 +156,7 @@ var InitiateRealTimeChart = function () {
                     min: 0,
                     max: 100
                 },
-                colors: [themeprimary],
+                colors: [themeBar],
                 series: {
                     lines: {
                         lineWidth: 0,
@@ -316,17 +213,17 @@ var InitiateStackedChart = function () {
                 {
                     label: "Windows Phone",
                     data: d1,
-                    color: themethirdcolor
+                    color: themeLineGraph
                 },
                 {
                     label: "Android",
                     data: d2,
-                    color: themesecondary
+                    color: themeBgGraph
                 },
                 {
                     label: "IOS",
                     data: d3,
-                    color: themeprimary
+                    color: themeBar
                 }
             ];
 
@@ -462,31 +359,31 @@ var InitiateVisitorChart = function () {
 
             var plot = $.plot("#visitors-chart", [{ data: d, color: themefourthcolor }], options);
 
-            var overview = $.plot("#visitors-chart-overview", [{ data: d, color: themefourthcolor }], {
-                series: {
-                    lines: {
-                        show: true,
-                        lineWidth: 1
-                    },
-                    shadowSize: 0
-                },
-                xaxis: {
-                    ticks: [],
-                    mode: "time"
-                },
-                yaxis: {
-                    ticks: [],
-                    min: 0,
-                    autoscaleMargin: 0.1
-                },
-                selection: {
-                    mode: "x"
-                },
-                grid: {
-                    borderWidth: 0,
-                    aboveData: false
-                }
-            });
+            // var overview = $.plot("#visitors-chart-overview", [{ data: d, color: themefourthcolor }], {
+            //     series: {
+            //         lines: {
+            //             show: true,
+            //             lineWidth: 1
+            //         },
+            //         shadowSize: 0
+            //     },
+            //     xaxis: {
+            //         ticks: [],
+            //         mode: "time"
+            //     },
+            //     yaxis: {
+            //         ticks: [],
+            //         min: 0,
+            //         autoscaleMargin: 0.1
+            //     },
+            //     selection: {
+            //         mode: "x"
+            //     },
+            //     grid: {
+            //         borderWidth: 0,
+            //         aboveData: false
+            //     }
+            // });
 
             // now connect the two
 
@@ -494,7 +391,7 @@ var InitiateVisitorChart = function () {
 
                 // do the zooming
 
-                plot = $.plot("#visitors-chart", [{ data: d, color: themeprimary }], $.extend(true, {}, options, {
+                plot = $.plot("#visitors-chart", [{ data: d, color: themeBar }], $.extend(true, {}, options, {
                     xaxis: {
                         min: ranges.xaxis.from,
                         max: ranges.xaxis.to
@@ -503,12 +400,12 @@ var InitiateVisitorChart = function () {
 
                 // don't fire event on the overview to prevent eternal loop
 
-                overview.setSelection(ranges, true);
+                // overview.setSelection(ranges, true);
             });
 
-            $("#visitors-chart-overview").bind("plotselected", function (event, ranges) {
-                plot.setSelection(ranges);
-            });
+            // $("#visitors-chart-overview").bind("plotselected", function (event, ranges) {
+            //     plot.setSelection(ranges);
+            // });
         }
     };
 }();
@@ -525,15 +422,15 @@ var InitiateAnnotationChart = function () {
                 data: d1, bars: {
                     show: true,
                     order: 1,
-                    fillColor: { colors: [{ color: themeprimary }, { color: themeprimary }] }
+                    fillColor: { colors: [{ color: themeBar }, { color: themeBar }] }
                 },
-                color: themeprimary
+                color: themeBar
             }];
 
             var markings = [
                 { color: "#f5f5f5", yaxis: { from: 1 } },
                 { color: "#f5f5f5", yaxis: { to: -1 } },
-                { color: themethirdcolor, lineWidth: 1, xaxis: { from: 2, to: 2 } },
+                { color: themeLineGraph, lineWidth: 1, xaxis: { from: 2, to: 2 } },
                 { color: themefourthcolor, lineWidth: 1, xaxis: { from: 8, to: 8 } }
             ];
 
@@ -550,7 +447,7 @@ var InitiateAnnotationChart = function () {
 
             // Append it to the placeholder that Flot already uses for positioning
 
-            placeholder.append("<div style='position:absolute;left:" + (o.left + 4) + "px;top:" + o.top + "px;color:" + themethirdcolor + ";font-size:smaller'>Warming up</div>");
+            placeholder.append("<div style='position:absolute;left:" + (o.left + 4) + "px;top:" + o.top + "px;color:" + themeLineGraph + ";font-size:smaller'>Warming up</div>");
 
             o = plot.pointOffset({ x: 8, y: -1.2 });
             placeholder.append("<div style='position:absolute;left:" + (o.left + 4) + "px;top:" + o.top + "px;color:" + themefourthcolor + ";font-size:smaller'>Actual measurements</div>");
@@ -573,6 +470,77 @@ var InitiateAnnotationChart = function () {
     };
 }();
 
+var InitiateMyPieChart = function () {
+    return {
+        init: function () {
+            // Example Data
+
+            //var data = [
+            //  { label: "Series1",  data: 10},
+            //  { label: "Series2",  data: 30},
+            //  { label: "Series3",  data: 90},
+            //  { label: "Series4",  data: 70},
+            //  { label: "Series5",  data: 80},
+            //  { label: "Series6",  data: 110}
+            //];
+
+            var data = [
+                { label: "Windows", data: [[1, 10]], color: themefifthcolor },
+                { label: "Linux", data: [[1, 30]], color: themeBgGraph },
+                { label: "Mac OS X", data: [[1, 90]], color: themeLineGraph },
+                { label: "Android", data: [[1, 70]], color: themefourthcolor },
+                { label: "Unix", data: [[1, 80]], color: themeBar }
+            ];
+
+            //var data = [
+            //  { label: "Series A",  data: 0.2063},
+            //  { label: "Series B",  data: 38888}
+            //];
+
+            // Randomly Generated Data
+
+            //var data = [],
+            //    series = Math.floor(Math.random() * 6) + 3;
+
+            //for (var i = 0; i < series; i++) {
+            //    data[i] = {
+            //        label: "Series" + (i + 1),
+            //        data: Math.floor(Math.random() * 100) + 1
+            //    }
+            //}
+
+            var placeholder = $("#pie-chart");
+
+            placeholder.unbind();
+
+            $("#title").text("Default pie chart");
+            $.plot(placeholder, data, {
+                series: {
+                    pie: {
+                        show: true,
+                        gradient: {
+                            radial: true,
+                            colors: [
+                              { opacity: 0.5 },
+                              { opacity: 1.0 }
+                            ]
+                        }
+                    }
+                }
+            });
+
+            // A custom label formatter used by several of the plots
+
+            function labelFormatter(label, series) {
+                return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+            }
+
+            //
+
+        }
+    };
+}();
+
 var InitiatePieChart = function () {
     return {
         init: function () {
@@ -589,10 +557,10 @@ var InitiatePieChart = function () {
 
             var data = [
                 { label: "Windows", data: [[1, 10]], color: themefifthcolor },
-                { label: "Linux", data: [[1, 30]], color: themesecondary },
-                { label: "Mac OS X", data: [[1, 90]], color: themethirdcolor },
+                { label: "Linux", data: [[1, 30]], color: themeBgGraph },
+                { label: "Mac OS X", data: [[1, 90]], color: themeLineGraph },
                 { label: "Android", data: [[1, 70]], color: themefourthcolor },
-                { label: "Unix", data: [[1, 80]], color: themeprimary }
+                { label: "Unix", data: [[1, 80]], color: themeBar }
             ];
 
             //var data = [
@@ -972,7 +940,7 @@ var InitiateHorizonalChart = function () {
                     lineWidth: 1,
                     borderWidth: 0
                 },
-                colors: [themeprimary],
+                colors: [themeBar],
                 yaxis: {
                     ticks: tickLabels
                 },
