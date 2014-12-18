@@ -21,10 +21,10 @@
 								<notification-container toaster-options="{'time-out': 3000}"></notification-container>
 								@if( Auth::User()->getAcl() === 'Admin' )
 									<div class="buttons-preview pull-right">
-										<div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/addSalary.html' )" ng-hide='template'>Add Salary Rates</div>
+										<div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/addSalary.html' )" btn-hide="closeTemplate">Add Salary Rates</div>
 									</div>
 								@endif
-								<div class="index-1" show-template reg-template="@{{template}}" ng-hide='closeTemplate'></div>
+								<div show-template reg-template="@{{template}}" ng-hide='closeTemplate'></div>
 							</div>
 
 							<div class="row">

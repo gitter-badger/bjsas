@@ -1,4 +1,4 @@
-<div class="page-sidebar sidebar-fixed" id="sidebar">
+<div class="page-sidebar sidebar-fixed menu-compact" id="sidebar">
     <div class="sidebar-header-wrapper">
         <input type="text" class="searchinput">
         <i class="searchicon fa fa-search"></i>

@@ -393,8 +393,8 @@
 	outline            : 0;
 }
 .searchinput:focus~.searchhelper {
-	display: block;
-	z-index: 124;
+	display : block;
+	z-index : 124;
 }
 .searchicon {
 	cursor   : pointer;
@@ -534,7 +534,8 @@
 	background-color: #fff;
 }
 .page-sidebar .sidebar-menu li.open>a {
-	color: #262626;
+	color  : #262626;
+	border : 1px solid #f3f3f3;
 }
 .page-sidebar .sidebar-menu .submenu>li .submenu {
 	border-top: 1px solid #eee;
@@ -589,7 +590,8 @@ display: block!important;
 	z-index          : 2;
 }
 .page-sidebar .sidebar-menu>li>.submenu>li.active>a:before {
-	background-color: #e2e2e2;
+	background-color : #fb6e52;
+	border           : 1px solid #fb6e52;
 }
 
 /* ========================================================================
@@ -1233,7 +1235,14 @@ form.form-group {
 	height   : auto;
 	border   : 1px solid #c7c7c7;
 	margin   : 0;
-	padding  : 10px 0;
+	padding  : 10px 0 0;
+}
+form div > hr {
+	margin-top    : 20px;
+	margin-bottom : 10px;
+	border-width  : 1px 0 0;
+	border-style  : solid;
+	border-color  : #dfdfdf;
 }
 /* ========================================================================
 	component: label

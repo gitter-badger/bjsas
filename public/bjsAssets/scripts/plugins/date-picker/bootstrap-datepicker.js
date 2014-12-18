@@ -509,9 +509,7 @@
 		setValue: function(){
 			var formatted = this.getFormattedDate()||this.element.find('input').attr( 'placeholder' );
 			if (!this.isInput){
-				if (this.component){
-					this.element.find('input').val(formatted).change();
-				}
+				this.element.find('input').val(formatted).change();
 			}
 			else {
 				this.element.val(formatted).change();

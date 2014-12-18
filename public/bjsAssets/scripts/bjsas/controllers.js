@@ -10,8 +10,11 @@ angular.module('controllers', [ 'angularMoment' ])
 		$scope.closeTemplate       = true;
 		$scope.employees           = [];
 		$scope.employeesWithSalary = [];
+		$scope.fieldValue          = false;
 
 		$scope.hiredMonth = [];
+
+
 
 		$scope.init = function () {
 			$scope.getCurrentDate();
@@ -20,9 +23,20 @@ angular.module('controllers', [ 'angularMoment' ])
 		};
 
 		$scope.getCurrentDate = function () {
-			$scope.currentDate = new Date();
-		};
 
+			var today = new Date();
+			var yr    = today.getFullYear() - 18;
+			var dt    = today.getDate();
+			var mt    = today.getMonth();
+				
+			var formatTwo = function ( ) {
+				return ( arguments[ 0 ] < 10 ) ? '0' + arguments[0] : arguments[0];
+			};
+
+			$scope.legalAgeDate = formatTwo( mt ) + '/' + formatTwo( dt ) + '/' + yr;
+			$scope.toDate       = formatTwo( mt + 1 ) + '/' + formatTwo( dt ) + '/' + today.getFullYear();
+		};
+		
 		$scope.getEmployees = function( ) {
 			Api.get( 'All', 'employee').then( function( response, status) {
 				$scope.employees = response.data;
@@ -178,7 +192,6 @@ angular.module('controllers', [ 'angularMoment' ])
 				$scope.removeToast(id);
 			}
 		};
-
 		$scope.click = function (toaster, isCloseButton) {
             if ($scope.config.tap === true) {
                 var removeToast = true;

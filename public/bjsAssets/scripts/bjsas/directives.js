@@ -5,7 +5,7 @@ angular.module('directives', [])
 		function($timeout) {
 			return {
 				restrict: 'A',
-				//added attribute
+
 				link: function(scope, elem, attr) {
 					$timeout(function() {
 						elem.selectpicker({
@@ -26,6 +26,18 @@ angular.module('directives', [])
 			};
 		}
 	] )
+	.directive('datePicker', function() {
+		return {
+			link : function( scope, element, attrs ) {
+				$(element).datepicker( {
+					todayHighlight : true,
+					todayBtn       : true,
+					orientation    : 'top left',
+					format         : 'mm/dd/yyyy'
+				});
+			}
+		};
+	} )
 	.directive( 'showTemplate', function ( CSRF_TOKEN ) {
 		return {
 			scope    : true,
@@ -40,6 +52,35 @@ angular.module('directives', [])
 						scope.csrf_token = CSRF_TOKEN;
 					}
 				} );
+			},
+		};
+	} )
+	.directive( 'btnHide', function ( ) {
+		return {
+			restrict: 'A',
+
+			link    : function(scope, element, attrs) {
+
+				var expression   = attrs.btnHide;				
+				var durationUp   = ( parseInt( attrs.showDuration ) || "fast" )
+				var durationDown = ( parseInt( attrs.showDuration ) || 100 )
+
+				if( !scope.$eval( expression ) ) {
+					element.hide();
+				}
+
+				scope.$watch( expression, function (newVal, oldVal) {
+					if( newVal === oldVal ) {
+						return;
+					}
+
+					if( newVal ) {
+						element.stop( true, true ).slideDown( durationDown );
+					} else {
+						element.stop( true, true ).slideUp( durationUp );
+					}
+
+				} )
 			},
 		};
 	} )
@@ -83,7 +124,7 @@ angular.module('directives', [])
 				}( month[ 0 ], attrs.currentYear );
 
 				var sales = attrs.sales.split(', ');
-				console.log(sales);
+
 				// update expense data
 				for(var day=1; day<=daysInMonth; day++) {
 					salesData.data.push( [ day, Math.random() ] );
@@ -145,7 +186,7 @@ angular.module('directives', [])
 					}
 
 					scope.configureTimer(toast);
-
+					
 					if (mergedConfig['newest-on-top'] === true) {
 						scope.toasters.unshift(toast);
 						if (mergedConfig['limit'] > 0 && scope.toasters.length > mergedConfig['limit']) {

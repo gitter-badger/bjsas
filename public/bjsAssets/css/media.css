@@ -21,7 +21,10 @@
     width: 45px;
   }
 
-  .page-sidebar.menu-compact .sidebar-header-wrapper:hover {
+  .page-sidebar.menu-compact .sidebar-header-wrapper:hover,
+  .page-sidebar.menu-compact .sidebar-header-wrapper:focus,
+  .searchinput:focus,
+  .searchinput:focus~.searchhelper {
     width: 238px;
   }
   .page-sidebar.menu-compact .sidebar-menu>li>a {
