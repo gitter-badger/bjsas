@@ -26,14 +26,22 @@ angular.module('directives', [])
 			};
 		}
 	] )
-	.directive('datePicker', function() {
+	.directive('datePicker', function( ) {
 		return {
-			link : function( scope, element, attrs ) {
+			link : function( scope, element, attr ) {
+
+				var toDate = scope.toDate;
+
+				if( attr.id === 'legalDP' ) {
+					toDate = scope.legalAgeDate;
+				}
+
 				$(element).datepicker( {
 					todayHighlight : true,
 					todayBtn       : true,
 					orientation    : 'top left',
-					format         : 'mm/dd/yyyy'
+					format         : 'mm/dd/yyyy',
+					value          : toDate
 				});
 			}
 		};
@@ -61,7 +69,7 @@ angular.module('directives', [])
 
 			link    : function(scope, element, attrs) {
 
-				var expression   = attrs.btnHide;				
+				var expression   = attrs.btnHide;
 				var durationUp   = ( parseInt( attrs.showDuration ) || "fast" )
 				var durationDown = ( parseInt( attrs.showDuration ) || 100 )
 
@@ -186,7 +194,7 @@ angular.module('directives', [])
 					}
 
 					scope.configureTimer(toast);
-					
+
 					if (mergedConfig['newest-on-top'] === true) {
 						scope.toasters.unshift(toast);
 						if (mergedConfig['limit'] > 0 && scope.toasters.length > mergedConfig['limit']) {

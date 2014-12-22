@@ -1237,6 +1237,10 @@ form.form-group {
 	margin   : 0;
 	padding  : 10px 0 0;
 }
+form.form-group input,
+form.form-group button.selectpicker > span.filter-option {
+	color : #4186d3;
+}
 form div > hr {
 	margin-top    : 20px;
 	margin-bottom : 10px;

@@ -43,19 +43,23 @@
 																<div class="col-lg-1 col-sm-2 text-center">
 																	<span>Id</span>
 																</div>
-																<div class="col-lg-7 col-sm-6 col-xs-12 text-center">
+																<div class="col-lg-4 col-sm-6 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
 																	<span>Employee</span>
+																</div>
+																<div class="col-lg-3 col-sm-6 col-xs-12 text-center">
+																	<span class="divider hidden-xs"></span>
+																	<span>Description</span>
 																</div>
 																<div class="col-lg-2 col-sm-2 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
 																	<i class="fa fa-calendar"></i>
-																	<span class="type"> Hired Date</span>
+																	<span class="type"> Date</span>
 																</div>
 																<div class="col-lg-2 col-sm-2 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
 																	<i class="fa fa-money"></i>
-																	<span class="type"> Rate</span>
+																	<span class="type"> Amount</span>
 																</div>
 															</div>
 														</li>
@@ -71,7 +75,11 @@
 																<div class="col-lg-1 col-sm-2 text-center">
 																	<span>@{{employee.id}}</span>
 																</div>
-																<div class="col-lg-7 col-sm-6 col-xs-12 text-center">
+																<div class="col-lg-4 col-sm-6 col-xs-12 text-center">
+																	<span class="divider hidden-xs"></span>
+																	<span>@{{employee.firstname + ' ' + employee.lastname}}</span>
+																</div>
+																<div class="col-lg-3 col-sm-6 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
 																	<span>@{{employee.firstname + ' ' + employee.lastname}}</span>
 																</div>

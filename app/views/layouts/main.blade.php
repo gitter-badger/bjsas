@@ -72,27 +72,6 @@
 
 			$(function () {
 
-				var formatTwo = function ( ) {
-					return ( arguments[ 0 ] < 10 ) ? '0' + arguments[0] : arguments[0];
-				}
-
-				var today        = new Date();
-				var yr           = today.getFullYear() - 18;
-				var dt           = today.getDate();
-				var mt           = today.getMonth();
-				var legalAgeDate = formatTwo( mt ) + '/' + formatTwo( dt ) + '/' + yr;
-				var toDate       = formatTwo( mt + 1 ) + '/' + formatTwo( dt ) + '/' + today.getFullYear();
-
-				$('#birthDate').attr( 'placeholder', legalAgeDate );
-				$('#date_released, #hiredDate').attr( 'placeholder', toDate );
-
-				$(".sp-employee").selectpicker({
-					'size' : 10
-				});
-
-				$('#payperiod').datepicker( { } );
-
-
 				$(".sidebar-toggler").on("click", function() {
 					return $("#sidebar").toggleClass("hide"), $(".sidebar-toggler").toggleClass("active"), !1
 				});

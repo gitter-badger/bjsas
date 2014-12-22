@@ -27,16 +27,16 @@ angular.module('controllers', [ 'angularMoment' ])
 			var today = new Date();
 			var yr    = today.getFullYear() - 18;
 			var dt    = today.getDate();
-			var mt    = today.getMonth();
-				
+			var mt    = today.getMonth() + 1;
+
 			var formatTwo = function ( ) {
 				return ( arguments[ 0 ] < 10 ) ? '0' + arguments[0] : arguments[0];
 			};
 
 			$scope.legalAgeDate = formatTwo( mt ) + '/' + formatTwo( dt ) + '/' + yr;
-			$scope.toDate       = formatTwo( mt + 1 ) + '/' + formatTwo( dt ) + '/' + today.getFullYear();
+			$scope.toDate       = formatTwo( mt ) + '/' + formatTwo( dt ) + '/' + today.getFullYear();
 		};
-		
+
 		$scope.getEmployees = function( ) {
 			Api.get( 'All', 'employee').then( function( response, status) {
 				$scope.employees = response.data;
@@ -82,7 +82,7 @@ angular.module('controllers', [ 'angularMoment' ])
 						response.data.message = 'Sorry, I can\'t proceed with errors! This useful information is highly needed.';
 					} else {
 						$scope.getEmployees();
-						$scope.showContent('');
+						$scope.hideContent();
 					}
 					$scope.requestResult = response.data;
 					toaster.pop(response.data.type, response.data.message);
@@ -158,7 +158,7 @@ angular.module('controllers', [ 'angularMoment' ])
 			$scope.closeTemplate = false;
 			$scope.template      = template;
 		};
-		$scope.hideContent = function ( template ) {
+		$scope.hideContent = function ( ) {
 			$scope.closeTemplate = true;
 			$scope.template      = '';
 		};

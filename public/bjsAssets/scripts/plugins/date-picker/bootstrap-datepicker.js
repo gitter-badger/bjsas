@@ -629,6 +629,11 @@
 				dates = this.isInput
 						? this.element.val()
 						: this.element.data('date') || (this.element.find('input').val() || this.element.find('input').attr( 'placeholder' ) );
+
+				if( !(dates instanceof Date) ) {
+					dates = this.o.value;
+				}
+
 				if (dates && this.o.multidate)
 					dates = dates.split(this.o.multidateSeparator);
 				else
@@ -1404,6 +1409,7 @@
 		endDate: Infinity,
 		forceParse: true,
 		format: 'mm/dd/yyyy',
+		value : '',
 		keyboardNavigation: true,
 		language: 'en',
 		minViewMode: 0,
