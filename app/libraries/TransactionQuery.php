@@ -33,7 +33,12 @@ class TransactionQuery {
 		$employee->hired_date   = date("Y-m-d H:i:s", strtotime(Input::get('hiredDate')));
 		$employee->save();
 
-		self::addSalary( $employee->id );
+		// if( isset( Input::get('amount') ) )
+			$salaryrate         = new SalaryRate;
+			$isDeleted          = $salaryrate->updateSalaryRate( $id );
+			$salaryrate->amount = Input::get('amount');
+			$salaryrate->employees()->associate($employee)->save();
+
 
 		$flashMessage = array(
 			'type'    => 'success',
@@ -70,7 +75,7 @@ class TransactionQuery {
 
 		$deleteMessage = array(
 			'type'    => 'error',
-			'message' => 'Invalid input!',
+			'message' => 'Invalid input! -- ' . $id,
 			'errors'  => $validator->errors()
 		);
 
@@ -82,7 +87,7 @@ class TransactionQuery {
 			);
 
 			$salaryrate = new SalaryRate;
-			$isDeleted =$salaryrate->updateSalaryRate( $id );				// update status of the current salary rate
+			$isDeleted  = $salaryrate->updateSalaryRate( $id );				// update status of the current salary rate
 
 			$salaryrate->amount = Input::get('amount');
 			$salaryrate->emp_id = $id;

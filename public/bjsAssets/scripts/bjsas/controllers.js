@@ -53,13 +53,14 @@ angular.module('controllers', [ 'angularMoment' ])
 			} );
 		};
 		$scope.getEmployeeRecord = function( query ) {
-			Api.get( query, 'employee' )
+			$scope.salaryperhr  = '';
+			$scope.salaryRate   = 0;
+			$scope.isSalaryRate = 0;
+			console.log( query );
+			Api.get( query, 'salary' )
 				.then( function( response, status) {
-					$scope.salaryperhr  = '';
-					$scope.salaryRate   = 0;
-					$scope.isSalaryRate = 0;
-					if( response.data['salary_rates'].length > 0 ) {
-						$scope.salaryRate = response.data['salary_rates'][ 0 ].amount;
+					if( response.data[0].salary_rates.length > 0 ) {
+						$scope.salaryRate = response.data[0].salary_rates[ 0 ].amount;
 						$scope.salaryperhr = ($scope.salaryRate || 0) / 8;
 					} else {
 						$scope.isSalaryRate = 1;
@@ -106,7 +107,7 @@ angular.module('controllers', [ 'angularMoment' ])
 						response.data.message = 'Sorry, I can\'t proceed with errors! This useful information is highly needed.';
 					} else {
 						$scope.getEmployeesWithSalary();
-						$scope.showContent('');
+						$scope.hideContent();
 					}
 					$scope.requestResult = response.data;
 					toaster.pop(response.data.type, response.data.message);

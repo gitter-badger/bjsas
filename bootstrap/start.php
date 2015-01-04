@@ -25,7 +25,7 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(function(){
-	return strpos(gethostname(), 'local') ? 'local' : 'production';
+	return 'local';
 });
 
 /*

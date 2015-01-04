@@ -59,6 +59,11 @@
                         <span class="menu-text">Cash Advances</span>
                     </a>
                 </li>
+                <li class="{{$subfield=='payroll' ? 'active' : ''}}">
+                    <a href="payroll">
+                        <span class="menu-text">Payroll</span>
+                    </a>
+                </li>
                 <li>
                     <a href="treeview.html">
                         <span class="menu-text">Users</span>

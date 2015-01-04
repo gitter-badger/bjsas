@@ -40,9 +40,6 @@
 													<ul class="widget-list">
 														<li class="widget-item hidden-xs hidden-sm">
 															<div class="row widget-list-title">
-																<div class="col-lg-1 col-sm-2 text-center">
-																	<span>Id</span>
-																</div>
 																<div class="col-lg-4 col-sm-6 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
 																	<span>Employee</span>
@@ -72,9 +69,6 @@
 														</li>
 														<li class="widget-item" ng-repeat="employee in employeesWithSalary | filter: { salary_rates:0 }" show-employee>
 															<div class="row">
-																<div class="col-lg-1 col-sm-2 text-center">
-																	<span>@{{employee.id}}</span>
-																</div>
 																<div class="col-lg-4 col-sm-6 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
 																	<span>@{{employee.firstname + ' ' + employee.lastname}}</span>

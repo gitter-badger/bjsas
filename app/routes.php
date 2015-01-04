@@ -1,5 +1,18 @@
 <?php
 Route::get('/'			  , 'PageController@showIndex');
+Route::get('/redis'		  , 'PageController@showRedis');
+
+/*Route::get('/'			  , function () {
+	return Queue::push('LogMessage', array('message'=>'Time : ' .time()))
+});
+
+class LogMessage{
+	public function fire() {
+		File::append(app_path().'/queue.txt', $data['message'].PHP_EOL);
+		$job->delete();
+	}
+}*/
+
 Route::get('/home'		  , 'PageController@showHome');
 Route::get('/about_us'	  , 'PageController@showAbout');
 Route::get('/contact_us'  , 'PageController@showContact');

@@ -9,10 +9,10 @@
 @section('content')
 	<div class="main-container container-fluid">
 		<div class="page-container">
-			@include( 'includes.sidebar', array('fieldActive'=>'Employees', 'subfield'=>'salary') )
+			@include( 'includes.sidebar', array('fieldActive'=>'Employees', 'subfield'=>'payroll') )
 
 			<div class="page-content">
-				@include( 'includes.breadcrumbs', array('crumbs'=>'Employee', 'subcrumbs'=>'Salary Rates') )
+				@include( 'includes.breadcrumbs', array('crumbs'=>'Employee', 'subcrumbs'=>'Payroll') )
 
 				<div class="page-body" ng-controller="employeesController" data-ng-init="init()">
 					<div class="row">
@@ -21,7 +21,7 @@
 								<notification-container toaster-options="{'time-out': 3000}"></notification-container>
 								@if( Auth::User()->getAcl() === 'Admin' )
 									<div class="buttons-preview pull-right">
-										<div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/addSalary.html' )" btn-hide="closeTemplate">Add Salary</div>
+										<div class="btn btn-blue shiny border-white animate bounceIn" ng-click="showContent( '/bjsAssets/partials/addPayroll.html' )" btn-hide="closeTemplate">Add Payroll</div>
 									</div>
 								@endif
 								<div class="index-1" show-template reg-template="@{{template}}" ng-hide='closeTemplate'></div>
@@ -32,7 +32,7 @@
 									<div class="widget">
 										<div class="widget-header bordered-bottom bordered-themesecondary">
 											<i class="widget-icon typcn typcn-contacts themesecondary"></i>
-											<span class="widget-caption themesecondary">List of Salary</span>
+											<span class="widget-caption themesecondary">List of Payrolls</span>
 										</div>
 										<div class="widget-body">
 											<div class="widget-main no-padding">
@@ -40,6 +40,9 @@
 													<ul class="widget-list">
 														<li class="widget-item hidden-xs hidden-sm">
 															<div class="row widget-list-title">
+																<div class="col-lg-1 col-sm-2 text-center">
+																	<span>Id</span>
+																</div>
 																<div class="col-lg-4 col-sm-6 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
 																	<span>Employee</span>
@@ -50,8 +53,8 @@
 																</div>
 																<div class="col-lg-2 col-sm-2 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
-																	<i class="fa fa-calendar type"></i>
-																	<span> Hire Date</span>
+																	<i class="fa fa-calendar"></i>
+																	<span class="type"> Date</span>
 																</div>
 																<div class="col-lg-2 col-sm-2 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
@@ -69,6 +72,9 @@
 														</li>
 														<li class="widget-item" ng-repeat="employee in employeesWithSalary | filter: { salary_rates:0 }" show-employee>
 															<div class="row">
+																<div class="col-lg-1 col-sm-2 text-center">
+																	<span>@{{employee.id}}</span>
+																</div>
 																<div class="col-lg-4 col-sm-6 col-xs-12 text-center">
 																	<span class="divider hidden-xs"></span>
 																	<span>@{{employee.firstname + ' ' + employee.lastname}}</span>
