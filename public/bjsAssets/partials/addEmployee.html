@@ -62,7 +62,7 @@
 								<label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
 									<span>Birth Date</span>
 								</label>
-								<div class="col-sm-12">
+								<div class="col-sm-12 no-padding-right">
 									<span id="legalDP" class="input-group date input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.birthDate[0]}}" field="birthDate" tooltip-show date-picker>
 										<input type="text" class="form-control" id="birthDate" placeholder="{{legalAgeDate}}" name="birthDate"  ng-model="employee.birthDate">
 										<i class="fa fa-calendar"></i>
@@ -85,7 +85,43 @@
 						</div>
 					</div>
 					<div class="col-xs-12 no-padding margin-top-20">
-						<div class="col-xs-12 col-sm-6 col-lg-6 no-padding">
+						<div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
+                            <div class="form-group">
+                                <label for="homeAddress" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>SSS ID</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.id[0]}}" field='id' tooltip-show>
+                                        <input type="text" class="form-control" placeholder="(optional)" name='agencyid[]' ng-model="employee.SSS">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
+                            <div class="form-group">
+                                <label for="homeAddress" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>Pag-ibig ID</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.id[0]}}" field='id' tooltip-show>
+                                        <input type="text" class="form-control" placeholder="(optional)" name='agencyid[]' ng-model="employee.PagIbig">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-2 no-padding">
+                            <div class="form-group">
+                                <label for="homeAddress" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>PhilHealth ID</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.id[0]}}" field='id' tooltip-show>
+                                        <input type="text" class="form-control" placeholder="(optional)" name='agencyid[]' ng-model="employee.PhilHealth">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-xs-12 col-sm-6 col-lg-4 no-padding">
 							<div class="form-group">
 								<label for="homeAddress" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
 									<span>Home Address</span>
@@ -103,7 +139,7 @@
 								<label for="amount" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
 									<span>Salary Rate</span>
 								</label>
-								<div class="col-sm-12 no-padding-right">
+								<div class="col-sm-12">
 									<span class="input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.amount[0]}}" field='amount' tooltip-show>
 										<input type="text" class="form-control" placeholder="PHP 0.00" name='amount' ng-model="employee.amount">
 										<i class="fa fa-money"></i>

@@ -14,14 +14,14 @@
                 <form class="form-group row" method="POST" accept-charset="UTF-8">
                     <input name="_token" type="hidden" value="{{csrf_token}}">
                     <div class="col-xs-12 no-padding">
-                        <div class="col-xs-12 col-sm-2 col-lg-4 no-padding">
+                        <div class="col-xs-12 col-sm-2 col-lg-3 no-padding">
                             <div class="form-group">
                                 <label for="inputEmail3" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
                                     <span>Employee</span>
                                 </label>
                                 <div class="col-sm-12 no-padding-right">
                                     <span class="no-padding block" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.emp_id[0]}}" field='emp_id' tooltip-show>
-                                        <select select-picker class="form-control show-tick show-menu-arrow" data-width="100%" name='emp_id' ng-model="employee.emp_id" ng-change="getEmployeeRecord(employee.id)">
+                                        <select select-picker="employees" class="form-control show-tick show-menu-arrow" data-width="100%" name='employee_id' ng-model="employee" ng-change="getEmployeeRecord(employee)">
                                             <option value="" disabled>-- select --</option>
                                             <option ng-repeat="employee in employees" value="{{employee.id}}">{{employee.firstname}} {{employee.lastname}}</option>
                                         </select>
@@ -36,26 +36,49 @@
                                 </label>
                                 <div class="col-sm-12">
                                     <span class="input-group date input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.salaryrate[0]}}" field="salaryrate" tooltip-show>
-                                        <input type="text" class="form-control" name="salaryrate" placeholder="0.00" value="{{salaryRate}}" readonly>
+                                        <input type="text" class="form-control" name="salaryrate" placeholder="0.00" value="{{salaryRate | currency : 'Php '}}" readonly>
                                         <i class="fa fa-money"></i>
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-lg-4 no-padding">
+                        <div class="col-xs-12 col-sm-6 col-lg-3 no-padding">
                             <div class="form-group">
                                 <label for="paystart" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
                                     <span>Days Of Worked</span>
                                 </label>
-                                <div class="col-sm-12">
-                                    <div class="input-daterange" id="payperiod" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.dateWorked[0]}}" field="DaysOfWorked" tooltip-show date-picker>
-                                        <div class="input-group">
-                                            <input ng-model="dateWorked.start" type="text" class="input-small form-control" name="paystart" placeholder="{{toDate}}" />
-                                            <span class="input-group-addon">to</span>
-                                            <input ng-model="dateWorked.end" type="text" class="input-small form-control" name="payend" placeholder="{{toDate}}" />
-                                        </div>
+                                <div class="col-sm-12 input-daterange" id="payperiod" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.dateWorked[0]}}" field="DaysOfWorked" tooltip-show date-picker>
+                                    <div class="input-group">
+                                        <input ng-change="setDaysOfWorked( dateWorked )" ng-model="dateWorked.start" type="text" class="input-small form-control" name="paystart" placeholder="{{toDate}}" />
+                                        <span class="input-group-addon">to</span>
+                                        <input ng-change="setDaysOfWorked( dateWorked )" ng-model="dateWorked.end" type="text" class="input-small form-control" name="payend" placeholder="{{toDate}}" />
                                     </div>
-
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-1 no-padding">
+                            <div class="form-group">
+                                <label for="lwop" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>LWOP / hr</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control" placeholder="0" name='lwop'>
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-1 no-padding">
+                            <div class="form-group">
+                                <label for="lwp" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
+                                    <span>LWP / hr</span>
+                                </label>
+                                <div class="col-sm-12 no-padding-right">
+                                    <span class="input-icon icon-right">
+                                        <input type="text" class="form-control" placeholder="0" name='lwp'>
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +89,7 @@
                                 </label>
                                 <div class="col-sm-12">
                                     <span class="input-group date input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.grosspay[0]}}" field="grosspay" tooltip-show>
-                                        <input type="text" class="form-control" id="grosspay" placeholder="0.00" name="grosspay"  ng-model="employee.grosspay">
+                                        <input type="text" class="form-control" name="subtotal" placeholder="0.00" value="{{subtotal | currency : 'Php '}}" readonly>
                                         <i class="fa fa-money"></i>
                                     </span>
                                 </div>
@@ -144,9 +167,9 @@
                                 <label for="homeAddress" class="hidden-xs col-sm-12 control-label no-padding-right text-left">
                                     <span>Total Deduction</span>
                                 </label>
-                                <div class="col-sm-11 no-padding-right">
-                                    <span class="input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.SSSContribution[0]}}" field='SSSContribution' tooltip-show>
-                                        <input type="text" class="form-control" placeholder="0.00" name='SSSContribution' ng-model="employee.SSSContribution">
+                                <div class="col-sm-12">
+                                    <span class="input-group date input-icon icon-right" data-toggle="tooltip" data-placement="top-right" data-original-title="{{requestResult.errors.totaldeduction[0]}}" field="totaldeduction" tooltip-show>
+                                        <input type="text" class="form-control" id="totaldeduction" name="totaldeduction" placeholder="0.00" ng-model="employee.totaldeduction" value="{{totaldeduction | currency : 'Php '}}" readonly>
                                         <i class="fa fa-money"></i>
                                     </span>
                                 </div>

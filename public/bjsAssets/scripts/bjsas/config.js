@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('config', [])
-	.constant( "CSRF_TOKEN", 
-		'<?php echo csrf_token(); ?>'
-	)
+	.constant( "CSRF_TOKEN", '<?php echo csrf_token(); ?>')
 	.constant('toasterConfig', {
 		'limit'          : 0,
 		'tap-to-dismiss' : true,

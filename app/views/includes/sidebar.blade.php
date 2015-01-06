@@ -17,10 +17,10 @@
                 <span class="menu-text"> Inventory </span>
             </a>
         </li>
-        <li class="{{$fieldActive=='Income' ? 'active' : ''}}">
+        <li class="{{$fieldActive=='Income' ? 'open' : ''}}">
             <a href="#" class="menu-dropdown">
                 <i class="menu-icon fa fa-money"></i>
-                <span class="menu-text"> Income </span>
+                <span class="menu-text"> Point - Of - Sales </span>
                 <i class="menu-expand"></i>
             </a>
             <ul class="submenu">
@@ -46,7 +46,12 @@
             <ul class="submenu">
                 <li class="{{$subfield=='list' ? 'active' : ''}}">
                     <a href="employee">
-                        <span class="menu-text">List of Employees</span>
+                        <span class="menu-text">Employee List</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="treeview.html">
+                        <span class="menu-text">Attendance</span>
                     </a>
                 </li>
                 <li class="{{$subfield=='salary' ? 'active' : ''}}">
@@ -59,17 +64,19 @@
                         <span class="menu-text">Cash Advances</span>
                     </a>
                 </li>
-                <li class="{{$subfield=='payroll' ? 'active' : ''}}">
-                    <a href="payroll">
-                        <span class="menu-text">Payroll</span>
-                    </a>
-                </li>
                 <li>
                     <a href="treeview.html">
                         <span class="menu-text">Users</span>
                     </a>
                 </li>
             </ul>
+        </li>
+        <!--Payroll-->
+        <li class="{{$fieldActive=='Payroll' ? 'active' : ''}}">
+            <a href="payroll">
+                <i class="menu-icon fa fa-picture-o"></i>
+                <span class="menu-text">Payroll</span>
+            </a>
         </li>
         <!--Profile-->
         <li>

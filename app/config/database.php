@@ -44,9 +44,9 @@ return array(
 	|
 	*/
 
-	// 'connections' => array(
-	// 	// 'mysql' => DbQuery::setDBEnv()
-	// ),
+	'connections' => array(
+		'mysql' => DbQuery::setDBEnv()
+	),
 
 	/*
 	|--------------------------------------------------------------------------

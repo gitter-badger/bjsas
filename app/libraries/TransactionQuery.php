@@ -75,7 +75,7 @@ class TransactionQuery {
 
 		$deleteMessage = array(
 			'type'    => 'error',
-			'message' => 'Invalid input! -- ' . $id,
+			'message' => 'Invalid input!',
 			'errors'  => $validator->errors()
 		);
 

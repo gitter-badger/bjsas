@@ -36,6 +36,10 @@ angular.module('directives', [])
 					toDate = scope.legalAgeDate;
 				}
 
+				if( attr.id === 'payperiod' ) {
+					toDate = '';
+				}
+
 				$(element).datepicker( {
 					todayHighlight : true,
 					todayBtn       : true,

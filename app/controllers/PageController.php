@@ -45,9 +45,10 @@ class PageController extends BaseController {
 	public function showRoute() {
 		$this->layout->content = View::make('pages.routes');
 	}
+
 	public function showRedis() {
-		// */$queue = Queue::push('LogMessage', array('message'=>'Time : ' .time()))
-		return "queue";
+		$queue = Queue::push('LogMessage', array('message'=>'Time : ' .time()));
+		return $queue;
 	}
 
 	public function show404() {

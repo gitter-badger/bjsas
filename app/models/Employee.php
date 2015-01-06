@@ -30,4 +30,9 @@ class Employee extends Eloquent {
 	public function users() {
 		return $this->hasMany('User');
 	}
+
+	public function Agencies()
+	{
+		return $this->hasMany( 'Agency' );
+	}
 }

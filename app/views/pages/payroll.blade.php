@@ -9,10 +9,10 @@
 @section('content')
 	<div class="main-container container-fluid">
 		<div class="page-container">
-			@include( 'includes.sidebar', array('fieldActive'=>'Employees', 'subfield'=>'payroll') )
+			@include( 'includes.sidebar', array('fieldActive'=>'Payroll', 'subfield'=>'') )
 
 			<div class="page-content">
-				@include( 'includes.breadcrumbs', array('crumbs'=>'Employee', 'subcrumbs'=>'Payroll') )
+				@include( 'includes.breadcrumbs', array('crumbs'=>'Payroll', 'subcrumbs'=>'') )
 
 				<div class="page-body" ng-controller="employeesController" data-ng-init="init()">
 					<div class="row">

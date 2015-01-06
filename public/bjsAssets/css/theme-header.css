@@ -1259,6 +1259,10 @@ label {
 /* ========================================================================
 	component: inputs
 ========================================================================== */
+
+.input-daterange .input-group input {
+	min-width: 145px;
+}
 input[type=file]:focus, input[type=radio]:focus, input[type=checkbox]:focus {
 	outline: thin dotted;
 	outline: 5px auto -webkit-focus-ring-color;

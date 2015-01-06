@@ -53,14 +53,15 @@ angular.module('controllers', [ 'angularMoment' ])
 			} );
 		};
 		$scope.getEmployeeRecord = function( query ) {
-			$scope.salaryperhr  = '';
-			$scope.salaryRate   = 0;
-			$scope.isSalaryRate = 0;
-			console.log( query );
 			Api.get( query, 'salary' )
 				.then( function( response, status) {
-					if( response.data[0].salary_rates.length > 0 ) {
-						$scope.salaryRate = response.data[0].salary_rates[ 0 ].amount;
+
+					$scope.salaryperhr  = '';
+					$scope.salaryRate   = 0;
+					$scope.isSalaryRate = 0;
+
+					if( response.data.salary_rates && response.data.salary_rates.length > 0 ) {
+						$scope.salaryRate = response.data.salary_rates[ 0 ].amount;
 						$scope.salaryperhr = ($scope.salaryRate || 0) / 8;
 					} else {
 						$scope.isSalaryRate = 1;
@@ -153,6 +154,7 @@ angular.module('controllers', [ 'angularMoment' ])
 		$scope.computeSalary = function () {
 			$scope.workedinhr = parseInt($scope.daysofworked, 10) * 8;
 			$scope.subtotal   = $scope.workedinhr * $scope.salaryperhr;
+			console.log($scope.subtotal);
 			$scope.netincome  = $scope.subtotal - $scope.totalDeduction;
 		};
 		$scope.showContent = function ( template ) {

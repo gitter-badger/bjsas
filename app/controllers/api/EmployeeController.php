@@ -12,6 +12,13 @@ class EmployeeController extends Controller {
 
 		$validator = Validator::make(Input::all(), Employee::$rules);
 
+		if( $validator->passes() ) {
+			$validator = Validator::make(
+				array('id'=>array( Input::get('SSS'),Input::get('PagIbig'),Input::get('PhilHealth'))),
+				Agency::$rules
+			);
+		}
+
 		$flashMessage = array(
 			'type'    => 'error',
 			'message' => 'Invalid input!',
@@ -36,6 +43,30 @@ class EmployeeController extends Controller {
 		$isDeleted          = $salaryrate->updateSalaryRate( $employee->id );
 		$salaryrate->amount = Input::get('amount');
 		$salaryrate->employees()->associate($employee)->save();
+
+		// add SSS id's
+		if ( Input::has('SSS') ) {
+			$agency         = new Agency;
+			$agency->id     = Input::get('SSS');
+			$agency->agency = 'SSS';
+			$agency->employees()->associate($employee)->save();
+		}
+
+		// add PagIbig id's
+		if ( Input::has('PagIbig') ) {
+			$agency         = new Agency;
+			$agency->id     = Input::get('PagIbig');
+			$agency->agency = 'PagIbig';
+			$agency->employees()->associate($employee)->save();
+		}
+
+		// add PhilHealth id's
+		if ( Input::has('PhilHealth') ) {
+			$agency         = new Agency;
+			$agency->id     = Input::get('PhilHealth');
+			$agency->agency = 'PhilHealth';
+			$agency->employees()->associate($employee)->save();
+		}
 
 		$flashMessage = array(
 			'type'    => 'success',
