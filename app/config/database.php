@@ -44,10 +44,6 @@ return array(
 	|
 	*/
 
-	'connections' => array(
-		'mysql' => DbQuery::setDBEnv()
-	),
-
 	/*
 	|--------------------------------------------------------------------------
 	| Migration Repository Table

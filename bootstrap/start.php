@@ -25,7 +25,8 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(function(){
-	return 'local';
+	$bjsas_env = getenv("BJSAS_ENV");
+	return $bjsas_env ? $bjsas_env : "local";
 });
 
 /*
