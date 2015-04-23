@@ -1,5 +1,7 @@
 ## BJSMotoshop System - Laravel PHP Framework
 
+[![Join the chat at https://gitter.im/elizar/bjsas](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/elizar/bjsas?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 
 BJSMotoshop System is a web application based on Laravel PHP framework. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
